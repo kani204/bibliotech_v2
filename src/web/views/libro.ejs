@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <title><%- title %></title>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar">
+          <div class="navbar-header">
+            <a href="/">Bibliotech</a>
+          </div>
+          <ul class="navbar-body">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/catalogo">Catalogo</a></li>
+          </ul>
+        </nav>
+      </header>
+    <main class="container">
+        <div class="serie">
+            <figure>
+                <img src="<%- libro.imagen %>">
+            </figure>
+            <div class="info">
+                <h1><%- libro.Titulo %></h1>
+                <h4>Synopsis</h4>
+                <p><%- libro.Sinopsis %></p>
+                <h4>Generos</h4>
+                <div class="generos">
+                    <span class="genero">Comedia</span>
+                    <span class="genero">Drama</span>
+                    <span class="genero">Arstes marciales</span>
+                    <span class="genero">Junevil</span>
+                    <span class="genero">Accion</span>
+                </div>
+            </div>
+        </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "url": "http://localhost:3000",
+    "window": {
+        "width": 1600,
+        "height": 900
+    },
+    "databaseConfig": {
+        "user": "root",
+        "password": "",
+        "host": "localhost",
+        "database": "gestion_turnos",
+        "port": 3306
+    }
+}

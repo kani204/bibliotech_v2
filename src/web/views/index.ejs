@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+    <title><%- title %></title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-header">
+          <a href="/">Bibliotech</a>
+        </div>
+        <ul class="navbar-body">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/catalogo">Catalogo</a></li>
+          <li><a href="login.html">Iniciar sesion</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="slider">
+      <div class="swiffy-slider slider-nav-autohide slider-nav-autoplay slider-nav-autopause slider-item-snapstart">
+        <ul class="slider-container" style="overflow-x: none;">
+          <a href="pages/mi-vida-de-funcionario-revoluciono-el-mundo.html">
+            <li>
+              <div class="texto">
+                <h3>Mi vida de funcionario revoluciono el mundo</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni natus, obcaecati placeat eaque voluptatibus amet itaque ea aliquid pariatur, sequi, quod rem minima id quae alias voluptatum molestias iusto asperiores.</p>
+              </div>
+              <img src="img/Mi vida de funcionario revoluciono el mundo.webp" alt="Mi vida de funcionario revoluciono el mundo">
+            </li>
+          </a>
+          <a href="pages/existencia.html">
+            <li>
+              <div class="texto">
+                <h3>Existencia</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio perferendis vero eius minus eaque consequuntur dolor rerum, ullam alias doloribus, soluta pariatur veritatis nostrum laudantium! Deleniti eligendi sit illo voluptate?</p>
+              </div>
+              <img src="img/Existencia.webp" alt="Existencia">
+            </li>
+          </a>
+          <a href="pages/el-rey-del-octagono.html">
+            <li>
+              <div class="texto">
+                <h3>El rey del octagono</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis consectetur repellat accusamus voluptatum eos consequuntur quibusdam magni. Eveniet quod adipisci nisi perspiciatis magni laboriosam, libero non cum quaerat illo! Totam!</p>
+              </div>
+              <img src="img/El rey del octagono.webp" alt="El rey del octagono">
+            </li>
+          </a>
+        </ul>
+        <div class="slider-indicators">
+            <button class="active"></button>
+            <button></button>
+            <button></button>
+        </div>
+      </div>
+    </section>
+    <main class="container">
+      <section>
+        <h2>Series en emision</h2>
+        <div class="series">
+          <% libros.forEach(libro => { %>
+            <div class="serie">
+              <figure>
+                <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>"/></a>
+              </figure>
+              <div class="title">
+                <a href="/libro/<%- libro.LibroID %>"><%- libro.Titulo %></a>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </section>
+      <section>
+        <h2 class="centrar">Populares</h2>
+        <div class="populares">
+          <a href="pages/estio.html">
+            <div class="popular">
+              <h3>Estio</h3>
+              <figure>
+                <img
+                  src="img/Estio.webp"
+                  alt="Estio"
+                />
+              </figure>
+            </div>
+          </a>
+          <a href="pages/perro-rabioso.html">
+            <div class="popular">
+              <h3>Perro Rabioso</h3>
+              <figure>
+                <img src="img/Perro rabioso.webp" alt="Perro Rabioso" />
+              </figure>
+            </div>
+          </a>
+          <a href="pages/el-regreso-del-jugador-congelado.html">
+            <div class="popular">
+              <h3>El regreso del jugador congelado</h3>
+              <figure>
+                <img src="img/El regreso del jugador congelado.webp" alt="El regreso del jugador congelado" />
+              </figure>
+            </div>
+          </a>
+          <a href="pages/la-magia-de-un-retornado-debe-ser-especial.html">
+            <div class="popular">
+              <h3>La magia de un retornado debe ser especial</h3>
+              <figure>
+                <img src="img/La magia de un retornado debe ser especial.webp" alt="La magia de un retornado debe ser especial" />
+              </figure>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>Desarrollado por Exaedro</p>
+    </footer>
+  </body>
+</html>
