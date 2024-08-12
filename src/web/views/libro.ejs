@@ -21,19 +21,17 @@
     <main class="container">
         <div class="serie">
             <figure>
-                <img src="<%- libro.imagen %>">
+                <img src="<%- libro[0].imagen %>">
             </figure>
             <div class="info">
-                <h1><%- libro.Titulo %></h1>
+                <h1><%- libro[0].Titulo %></h1>
                 <h4>Synopsis</h4>
-                <p><%- libro.Sinopsis %></p>
+                <p><%- libro[0].Sinopsis %></p>
                 <h4>Generos</h4>
                 <div class="generos">
-                    <span class="genero">Comedia</span>
-                    <span class="genero">Drama</span>
-                    <span class="genero">Arstes marciales</span>
-                    <span class="genero">Junevil</span>
-                    <span class="genero">Accion</span>
+                    <% libro.forEach(l => { %>
+                      <span class="genero"><%- l.NombreCategoria %></span>
+                    <%})%>
                 </div>
             </div>
         </div>

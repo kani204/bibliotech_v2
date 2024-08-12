@@ -47,11 +47,11 @@ indexRouter.get('/libro/:id', (req, res) => {
     const { id } = req.params
 
     try {
-        const sql = `SELECT * FROM libros WHERE LibroID = ${id};`
+        const sql = `SELECT * FROM libros JOIN libros_categorias lc ON lc.LibroID = libros.LibroID JOIN categorias c ON lc.CategoriaID = c.CategoriaID WHERE libros.LibroID = ${id};`
 
         db.query(sql, (err, result) => {
             console.log(result)
-            res.render('libro', { title: 'Libro', libro: result[0] })
+            res.render('libro', { title: 'Libro', libro: result })
         })
     } catch(err) {
         res.status(404).send(err)
