@@ -38,9 +38,9 @@
           <% })%>
         </ul>
         <div class="slider-indicators">
-            <button class="active"></button>
-            <button></button>
-            <button></button>
+            <% visitados.forEach(visitado => { %>
+              <button></button>
+            <% }) %>
         </div>
       </div>
     </section>
@@ -48,7 +48,7 @@
       <section>
         <h2>Series en emision</h2>
         <div class="series">
-          <% libros.forEach(libro => { %>
+          <% recientes.forEach(libro => { %>
             <div class="serie">
               <figure>
                 <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>"/></a>
@@ -80,7 +80,7 @@
       </section>
     </main>
     <footer>
-      <p>Desarrollado por Exaedro</p>
+      <p>Desarrollado por alumnos de la EESTN°1</p>
     </footer>
   </body>
 </html>

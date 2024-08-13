@@ -1,22 +1,23 @@
-const mysql = require('mysql2/promise.js')
+import mysql from 'mysql2/promise.js'
 
-const { databaseConfig } = require('../config.json') // Configuracion para conectarse a la base de datos
-
-async function connect() {
-    const db = await mysql.createConnection({
-        user: 'root',
-        database: 'gestion_turnos',
-        password: '',
-        port: 3306,
-        host: 'localhost'
-    })
+const connection = async () => {
+    try {
+        const db = await mysql.createConnection({
+            user: 'root',
+            database: 'bibliotech_v2',
+            password: '',
+            port: 3306,
+            host: 'localhost'
+        })
+        
+        db.connect(err => { 
+            if(err) throw new err
+        })
     
-    db.connect(err => { 
-        if(err) throw new err
-        console.log('Base de datos conectada')
-    })
-
-    return db
+        return db
+    } catch(err) {
+        console.error(err)
+    }
 }
 
-module.exports = connect 
+export default connection

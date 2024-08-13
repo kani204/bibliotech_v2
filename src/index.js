@@ -1,21 +1,25 @@
-const { app, BrowserWindow } = require('electron')
-const path = require('node:path')
+import { app, BrowserWindow } from 'electron'
+import path from 'node:path'
 
-require('./api/index.js') // Iniciar la API
+import './api/index.js' // Iniciar la API
 
-const { window, url } = require('./config.json')
+// Configuracion
+import config from './config.json' with { type: 'json' }
+const width = config.window.width
+const height = config.window.height
+const apiURL = config.window.url
 
 // Funcion para crear la ventana
 const createWindow = () => {
     const win = new BrowserWindow({
-      width: window.width,
-      height: window.height,
+      width,
+      height,
       webPreferences: {
-        preload: path.join(__dirname, 'web/public/js/preload.js')
+        preload: path.join(process.cwd(), 'src/web/public/js/preload.js')
       }
     })
-  
-    win.loadURL(url)
+
+    win.loadURL('http://localhost:3000')
 }
 
 // Iniciar la ventana
