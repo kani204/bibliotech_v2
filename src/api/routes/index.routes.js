@@ -19,10 +19,16 @@ db.connect(err => {
 
 indexRouter.get('/', (req, res) => {
     try {
-        const sql = "SELECT * FROM libros LIMIT 8;"
+        const recientesSql = "SELECT * FROM libros LIMIT 8;"
+        const visitadosSql = "SELECT * FROM libros ORDER BY Visitas ASC;"
+        const gustadosSql = "SELECT * FROM libros ORDER BY Gustados ASC LIMIT 4;"
 
-        db.query(sql, (err, results) => {
-            res.render('index', { title: 'Bibliotech', libros: results })
+        db.query(recientesSql, (err, results) => {
+            db.query(visitadosSql, (err, visitados) => {
+                db.query(gustadosSql, (err, gustados) => {
+                    res.render('index', { title: 'Bibliotech', libros: results, visitados, gustados })
+                })
+            })
         })
     } catch(err) {
         res.status(404).send(err)
@@ -50,7 +56,6 @@ indexRouter.get('/libro/:id', (req, res) => {
         const sql = `SELECT * FROM libros JOIN libros_categorias lc ON lc.LibroID = libros.LibroID JOIN categorias c ON lc.CategoriaID = c.CategoriaID WHERE libros.LibroID = ${id};`
 
         db.query(sql, (err, result) => {
-            console.log(result)
             res.render('libro', { title: 'Libro', libro: result })
         })
     } catch(err) {
