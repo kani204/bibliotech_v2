@@ -17,10 +17,10 @@ class BookController {
     static async getAll(req, res) {
         const { username, role } = req.session
 
-        const { genero } = req.query
+        const { generoId } = req.query
 
         try {
-            const libros = await BookModel.getAll({ genre: genero })   
+            const libros = await BookModel.getAll({ genre: generoId })   
 
             res.status(200).render('catalogo', { title: 'Catalogo', libros, username, role })
         } catch(err) {

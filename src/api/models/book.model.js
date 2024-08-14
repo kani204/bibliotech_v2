@@ -5,6 +5,7 @@ class BookModel {
         const db = await connection()
 
         let sql = "SELECT * FROM libros;"
+        if(genre) sql = `SELECT l.LibroID, l.Titulo, l.imagen FROM libros l JOIN libros_categorias lc ON l.LibroID = lc.LibroID JOIN categorias c ON lc.CategoriaID = c.CategoriaID WHERE c.CategoriaID = ${genre}`
 
         const [libros] = await db.query(sql)
 
@@ -35,7 +36,7 @@ class BookModel {
         const sql = `SELECT * FROM libros JOIN libros_categorias lc ON lc.LibroID = libros.LibroID JOIN categorias c ON lc.CategoriaID = c.CategoriaID WHERE libros.LibroID = ${id};`
 
         const [libro] = await db.query(sql)
-
+ 
         return libro
     }
 }

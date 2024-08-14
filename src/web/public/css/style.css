@@ -89,6 +89,7 @@ h2 {
 
 .serie {
     max-width: 201px;
+    position: relative;
     max-height: 350px;
 }
 
@@ -264,6 +265,7 @@ footer {
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+<<<<<<< HEAD
 .editar-libro-btn {
     display: inline-block;
     margin-top: 20px;
@@ -288,6 +290,38 @@ footer {
 
 
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+=======
+.menu {
+    width: 25px!important;
+    height: 25px!important;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+    padding: 5px;
+    z-index: 1000;
+    cursor: pointer;
+    background-color: rgb(33, 33, 33);
+}
+
+.dropdown {
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    display: none;
+    padding: 5px;
+    z-index: 1000;
+    border-radius: 5px;
+    background-color: rgb(33, 33, 33);
+}
+
+.serie:hover .menu {
+    display: block;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+>>>>>>> d2fd0090170d10bdd82af5e90d4d055372fdec5b
 @media (max-width: 575.98px) {
     .container, .navbar, .catalogo-container, .slider {
         width: 100%;

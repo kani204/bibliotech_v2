@@ -19,7 +19,7 @@
                 <h4>Géneros</h4>
                 <div class="generos">
                     <% libro.forEach(l => { %>
-                      <a href="/catalogo?genero=<%- l.NombreCategoria %>">
+                      <a href="/catalogo?generoId=<%- l.CategoriaID %>">
                         <span class="genero"><%- l.NombreCategoria %></span>
                       </a>
                     <%})%>
