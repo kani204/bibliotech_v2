@@ -265,32 +265,6 @@ footer {
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-<<<<<<< HEAD
-.editar-libro-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 20px;
-    background-color: rgb(228, 114, 0);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 3px 15px -5px rgba(0, 0, 0, 0.5);
-}
-
-.editar-libro-btn:hover {
-    background-color: rgb(184, 92, 0);
-    box-shadow: 0px 3px 25px -5px rgba(0, 0, 0, 0.8);
-}
-
-
-
-
-/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-=======
 .menu {
     width: 25px!important;
     height: 25px!important;
@@ -321,7 +295,30 @@ footer {
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
->>>>>>> d2fd0090170d10bdd82af5e90d4d055372fdec5b
+.editar-libro-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: rgb(228, 114, 0);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 3px 15px -5px rgba(0, 0, 0, 0.5);
+}
+
+.editar-libro-btn:hover {
+    background-color: rgb(184, 92, 0);
+    box-shadow: 0px 3px 25px -5px rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media (max-width: 575.98px) {
     .container, .navbar, .catalogo-container, .slider {
         width: 100%;
