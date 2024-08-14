@@ -88,6 +88,7 @@ h2 {
 
 .serie {
     max-width: 201px;
+    position: relative;
     max-height: 350px;
 }
 
@@ -259,6 +260,36 @@ footer {
 
 .swiffy-slider ul li:nth-child(3) img {
     transform: translateY(-150px);
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.menu {
+    width: 25px!important;
+    height: 25px!important;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+    padding: 5px;
+    z-index: 1000;
+    cursor: pointer;
+    background-color: rgb(33, 33, 33);
+}
+
+.dropdown {
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    display: none;
+    padding: 5px;
+    z-index: 1000;
+    border-radius: 5px;
+    background-color: rgb(33, 33, 33);
+}
+
+.serie:hover .menu {
+    display: block;
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */

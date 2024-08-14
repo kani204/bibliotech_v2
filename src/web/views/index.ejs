@@ -34,9 +34,13 @@
     <main class="container">
       <section>
         <h2>Series en emisión</h2>
-        <div class="series">
+        <div class="series" id="series">
           <% recientes.forEach(libro => { %>
             <div class="serie">
+              <img src="/img/puntos.png" class="menu" alt="">
+              <div class="dropdown">
+                <a href="/libro/<%- libro.LibroID %>/editar" class="btn">Editar</a>
+              </div>
               <figure>
                 <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>"/></a>
               </figure>
@@ -70,4 +74,5 @@
       <p>Desarrollado por alumnos de la EESTN°1</p>
     </footer>
   </body>
+  <script src="js/dropdown.js"></script>
 </html>
