@@ -1,19 +1,8 @@
-* {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: system-ui;
-}
-
-.fondo {
+.logeoFondo {
     z-index: 1;
 }
 
-.fondo img {
+.logeoFondo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -21,12 +10,12 @@ body {
     filter: brightness(45.66666%)
 }
 
-header {
+.logeoHeader {
     position: absolute;
     margin: 40px 0px 0px 70px
 }
 
-header a {
+.logeoHeader a {
     font-weight: bold;
     font-size: 22px;
     position: relative;
@@ -34,7 +23,7 @@ header a {
     color: #fff;
 }
 
-.container {
+.logeoForm {
     height: 96vh;
     display: flex;
     justify-content: center;
@@ -42,7 +31,7 @@ header a {
     flex-direction: column;
 }
 
-.container form {
+.logeoForm form {
     display: flex;
     flex-direction: column;
     background-color: #2b2b2b;
@@ -54,11 +43,11 @@ header a {
     box-shadow: 0px 3px 100px -20px rgba(0,0,0);
 }
 
-.container form label {
+.logeoForm form label {
     font-size: 28px;
 }
 
-.container form button {
+.logeoForm form button {
     border-radius: 5px;
     background-color: rgb(228, 114, 0);
     color: #fff;
@@ -69,11 +58,11 @@ header a {
     transition: background-color 0.3s ease;
 }
 
-.container form button:hover {
+.logeoForm form button:hover {
     background-color: rgb(184, 92, 0);
 }
 
-.container form input {
+.logeoForm form input {
     border: none;
     border-bottom: 2px solid rgb(238, 143, 0);
     background-color: transparent;
@@ -83,13 +72,13 @@ header a {
     margin-bottom: 35px;
 }
 
-.container form input:focus {
+.logeoForm form input:focus {
     border: none;
     border-bottom: 2px solid rgb(238, 143, 0);
     outline: none;
 }
 
-.container a {
+.logeoForm a {
     margin-top: 10px;
     z-index: 100;
     color: #fff;

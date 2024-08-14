@@ -1,0 +1,19 @@
+<nav class="navbar">
+    <div class="navbar-header">
+      <a href="/">Bibliotech</a>
+    </div>
+    <ul class="navbar-body">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/catalogo">Catalogo</a></li>
+      <% if(typeof role != 'undefined') { %>
+        <% if(role == 'admin') { %>
+          <li><a href="/panel">Panel</a></li>
+        <% } %>
+      <% } %>
+      <% if(typeof username == 'undefined') { %>
+        <li><a href="/login">Iniciar sesion</a></li>
+      <% } else { %>
+        <li><a href="/perfil"><%- username %></a></li>
+      <% } %>
+    </ul>
+  </nav>

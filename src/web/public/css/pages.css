@@ -1,87 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
 
-
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #111!important;
-    color: #fff!important;
-    font-family: system-ui;
-}
-
-a {
-    color: #fff!important;
-    text-decoration: none;
-}
-
-h2 {
-    font-size: 32px;
-    text-decoration: underline pink;
-    margin-bottom: 15px;
-}
-
-.centrar {
-    text-align: center;
-}
-
-/* //////////////////////////////////////////////////////////////////////////////////////////////// */
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    width: 1200px;
-    margin: 0 auto;
-}
-
-.navbar-header {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-left: 20px;
-}
-
-.navbar-body {
-    display: flex;
-    list-style: none;
-    margin-right: 20px;
-}
-
-.navbar-body a {
-    padding: 15px 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-radius: 7px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-body a:hover {
-    background-color: rgb(60, 60, 60);
-}
-
-/* //////////////////////////////////////////////////////////////////////////////////////////////// */
-
-.container {
+.libroContainer {
     margin: 4rem auto 0px auto;
 }
 
-.serie {
+.libroIndividual {
     display: flex;
     gap: 20px;
 }
 
-.serie img {
+.libroIndividual img {
     width: 312px;
     height: 480px;
     border-radius: 7px;
 }
 
-.serie h1 {
+.libroIndividual h1 {
     font-family: 'Fugaz One', cursive;
     font-size: 50px;
     font-weight: 200;
@@ -89,23 +23,23 @@ h2 {
     margin-bottom: 15px;
 }
 
-.serie h4 {
+.libroIndividual h4 {
     font-size: 20px;
     margin-bottom: 7px;
 }
 
-.serie p {
+.libroIndividual p {
     margin-bottom: 15px;
 }
 
-.serie .generos {
+.libroIndividual .generos {
     height: 40px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.serie .genero {
+.libroIndividual .genero {
     padding: 13px;
     border: rgb(95, 95, 95) solid 2px;
     border-radius: 10px;
@@ -115,66 +49,66 @@ h2 {
 
 
 @media (max-width: 575.98px) {
-    .container, .navbar {
+    .libroContainer, .navbar {
         width: 100%;
     }   
 
-    .serie {
+    .libroIndividual {
         flex-direction: column;
         margin: 30px
     }
 
-    .serie h1 {
+    .libroIndividual h1 {
         text-align: center;
         font-size: 42px;
     }
 
-    .serie figure {
+    .libroIndividual figure {
         text-align: center;
     }
 
-    .serie img {
+    .libroIndividual img {
         width: 100%;
     }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) { 
-    .container, .navbar {
+    .libroContainer, .navbar {
         width: 540px;
         margin: 0 auto;
     }
 
-    .serie {
+    .libroIndividual {
         flex-direction: column;
     }
 
-    .serie h1 {
+    .libroIndividual h1 {
         text-align: center;
     }
     
-    .serie figure {
+    .libroIndividual figure {
         text-align: center;
     }
 
-    .serie img {
+    .libroIndividual img {
         width: 80%;
     }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) { 
-    .container, .navbar {
+    .libroContainer, .navbar {
         width: 720px;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .container, .navbar {
+    .libroContainer, .navbar {
         width: 960px;
     }
 }
 
 @media (min-width: 1200px) {
-    .container, .navbar {
+    .libroContainer, .navbar {
         width: 1200px;
     }
 }

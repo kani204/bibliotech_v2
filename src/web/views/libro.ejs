@@ -1,25 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/pages.css" />
-    <title><%- title %></title>
+    <%- include('partials/head.ejs') %>
   </head>
   <body>
     <header>
-        <nav class="navbar">
-          <div class="navbar-header">
-            <a href="/">Bibliotech</a>
-          </div>
-          <ul class="navbar-body">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/catalogo">Catalogo</a></li>
-          </ul>
-        </nav>
+        <%- include('partials/navbar.ejs') %>
       </header>
-    <main class="container">
-        <div class="serie">
+    <main class="libroContainer">
+        <div class="libroIndividual">
             <figure>
                 <img src="<%- libro[0].imagen %>">
             </figure>
@@ -30,7 +19,9 @@
                 <h4>Generos</h4>
                 <div class="generos">
                     <% libro.forEach(l => { %>
-                      <span class="genero"><%- l.NombreCategoria %></span>
+                      <a href="/catalogo?genero=<%- l.NombreCategoria %>">
+                        <span class="genero"><%- l.NombreCategoria %></span>
+                      </a>
                     <%})%>
                 </div>
             </div>

@@ -1,10 +1,10 @@
 import connection from '../database.js'
 
 class BookModel {
-    static async getAll() {
+    static async getAll({ genre }) {
         const db = await connection()
 
-        const sql = "SELECT * FROM libros;"
+        let sql = "SELECT * FROM libros;"
 
         const [libros] = await db.query(sql)
 
