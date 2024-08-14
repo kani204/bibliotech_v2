@@ -1,9 +1,21 @@
 import { Router } from 'express'
 const bookRouter = new Router()
 
+import connection from '../database.js'
+
 import BookController from '../controllers/book.controller.js' 
 
 bookRouter.get('/libro/:id', (req, res) => { BookController.getById(req, res) })
+
+bookRouter.get('/libro/:id/editar', async (req, res) => {
+    const { id } = req.params
+
+    const db = await connection()
+
+    const [libro] = await db.query(`SELECT * FROM libros WHERE LibroID = ${id}`)
+    
+    res.render('editar', { title: 'Editar libro', libro: libro[0] })
+})
 
 export default bookRouter
 

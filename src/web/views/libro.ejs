@@ -6,7 +6,7 @@
   <body>
     <header>
         <%- include('partials/navbar.ejs') %>
-      </header>
+    </header>
     <main class="libroContainer">
         <div class="libroIndividual">
             <figure>
@@ -16,7 +16,7 @@
                 <h1><%- libro[0].Titulo %></h1>
                 <h4>Synopsis</h4>
                 <p><%- libro[0].Sinopsis %></p>
-                <h4>Generos</h4>
+                <h4>Géneros</h4>
                 <div class="generos">
                     <% libro.forEach(l => { %>
                       <a href="/catalogo?genero=<%- l.NombreCategoria %>">
@@ -24,6 +24,8 @@
                       </a>
                     <%})%>
                 </div>
+                <!-- Botón para editar el libro -->
+                <a href="/libro/<%- libro[0].LibroID %>/editar" class="editar-libro-btn">Editar Libro</a>
             </div>
         </div>
     </main>

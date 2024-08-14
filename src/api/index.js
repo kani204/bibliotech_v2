@@ -30,6 +30,9 @@ app.use(userRouter)
 // Estaticos
 app.use(express.static(path.join(process.cwd(), 'src/web/public')))
 app.use('/libro', express.static(path.join(process.cwd(), 'src/web/public')))
+app.use('/libro/:id', express.static(path.join(process.cwd(), 'src/web/public')))
+
+
 
 // Iniciar servidor
 app.listen(port, () => {

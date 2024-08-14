@@ -1,0 +1,149 @@
+.edit-book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 32px;
+    text-decoration: underline pink;
+}
+
+.edit-book-container form {
+    display: flex;
+    flex-direction: column;
+    background-color: #2b2b2b;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 3px 50px -20px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: 100%;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: row; /* Imagen y formulario en la misma fila */
+}
+
+.book-image-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.book-image-section img {
+    max-width: 200px;
+    max-height: 300px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.book-image-section input[type="file"] {
+    background-color: rgb(228, 114, 0);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-image-section input[type="file"]:hover {
+    background-color: rgb(184, 92, 0);
+}
+
+.book-details-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-details-columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.book-details-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.book-details-column:last-child {
+    margin-right: 0;
+}
+
+.book-details-section label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #eee;
+}
+
+.book-details-section input[type="text"],
+.book-details-section textarea,
+.book-details-section select {
+    border: none;
+    border-bottom: 2px solid rgb(238, 143, 0);
+    background-color: transparent;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.book-details-section input[type="text"]:focus,
+.book-details-section textarea:focus,
+.book-details-section select:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(238, 143, 0);
+}
+
+.sinopsis {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sinopsis label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #eee;
+}
+
+.sinopsis textarea {
+    border: none;
+    border-bottom: 2px solid rgb(238, 143, 0);
+    background-color: transparent;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    height: 60px;
+    resize: none;
+}
+
+button {
+    align-self: flex-end;
+    border-radius: 5px;
+    background-color: rgb(228, 114, 0);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(184, 92, 0);
+}
