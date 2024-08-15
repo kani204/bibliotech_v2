@@ -22,7 +22,6 @@ class BookController {
         try {
             const libros = title ? await BookModel.getByTitle({ title }) : await BookModel.getAll({ genre: generoId })   
 
-            console.log(libros)
             res.status(200).render('catalogo', { title: 'Catalogo', libros, username, role })
         } catch(err) {
             res.status(404).render('error', { title: 'Error 404', err })

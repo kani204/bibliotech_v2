@@ -264,6 +264,13 @@ footer {
     max-height: 400px;
 }
 
+.mensajeError {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 44px;
+    color: #ffffff71;
+}
+
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .slider {

@@ -18,16 +18,20 @@
         </section>
         <h2>Libros disponibles</h2>
         <div class="catalogo">
-          <% libros.forEach(libro => { %>
-            <div class="serie">
-              <figure>
-                <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" /></a>
-              </figure>
-              <div class="title">
-                <a href="/libro/<%- libro.LibroID %>"><%- libro.Titulo %></a>
+          <% if(libros.length > 0) {%>
+            <% libros.forEach(libro => { %>
+              <div class="serie">
+                <figure>
+                  <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" /></a>
+                </figure>
+                <div class="title">
+                  <a href="/libro/<%- libro.LibroID %>"><%- libro.Titulo %></a>
+                </div>
               </div>
-            </div>
-          <% })%>
+            <% })%>
+          <% } else { %>
+            <h2 class="mensajeError">No hemos encontrado nada...</h2>
+          <% } %>
         </div>
       </main>
     </div>
