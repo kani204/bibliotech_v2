@@ -1,3 +1,5 @@
-const menu = document.getElementById('series').getElementsByClassName('menu')
-
-menu.item
+tippy(document.querySelectorAll('.menu'), {
+    duration: 0,
+    arrow: false,
+    trigger: 'click',
+})
