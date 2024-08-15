@@ -2,7 +2,8 @@
     <div class="navbar-header">
       <a href="/">Bibliotech</a>
     </div>
-    <ul class="navbar-body">
+    <img src="img/menu.png" class="menuImg" id="navbarMenu">
+    <ul class="navbar-body" id="navbarBody">
       <li><a href="/">Inicio</a></li>
       <li><a href="/catalogo">Catalogo</a></li>
       <% if(typeof role != 'undefined') { %>
@@ -17,3 +18,5 @@
       <% } %>
     </ul>
   </nav>
+
+<script src="js/navbar.js"></script>

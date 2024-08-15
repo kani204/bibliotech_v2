@@ -73,7 +73,7 @@ h2 {
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .wrapper {
-    margin-top: 98px;
+    margin-top: 110px;
 }
 
 .container {
@@ -252,6 +252,7 @@ footer {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
     row-gap: 20px;
+    justify-items: center;
 }
 
 .catalogo figure {
@@ -447,6 +448,40 @@ footer {
 
     .series, .catalogo {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 768px) {
+    .menuImg {
+        display: none;
+    }
+    .navbar-body {
+        display: flex!important;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-body {
+        flex-direction: column;
+        background-color: #111;
+        position: absolute;
+        display: none;
+        top: 80px;
+        left: 0;
+    }
+
+    .navbar-body a {
+        margin: 0!important;
+        display: block;
+        width: 538px;
+    }
+
+    .navbar-body li {
+        width: 538px;
+    }
+
+    .catalogo-container .busqueda {
+        padding: 30px 15px;
     }
 }
 
