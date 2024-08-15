@@ -11,11 +11,20 @@
         <div class="libroIndividual">
             <figure>
                 <img src="<%- libro[0].imagen %>">
+
+                <% if(typeof role != 'undefined') { %>
+                  <!-- Botón para editar el libro -->
+                  <a href="/libro/<%- libro[0].LibroID %>/editar" class="editar-libro-btn">Editar Libro</a>
+                <% } %>
             </figure>
             <div class="info">
                 <h1><%- libro[0].Titulo %></h1>
-                <h4>Synopsis</h4>
+                <h4>Sinopsis</h4>
                 <p><%- libro[0].Sinopsis %></p>
+                <h4>Idioma</h4>
+                <p><%- libro[0].Idioma %></p>
+                <h4>Paginas</h4>
+                <p><%- libro[0].CantidadPaginas %> en total</p>
                 <h4>Géneros</h4>
                 <div class="generos">
                     <% libro.forEach(l => { %>
@@ -23,9 +32,7 @@
                         <span class="genero"><%- l.NombreCategoria %></span>
                       </a>
                     <%})%>
-                </div>
-                <!-- Botón para editar el libro -->
-                <a href="/libro/<%- libro[0].LibroID %>/editar" class="editar-libro-btn">Editar Libro</a>
+                </div>      
             </div>
         </div>
     </main>

@@ -15,6 +15,11 @@
     border-radius: 7px;
 }
 
+.libroIndividual figure {
+    display: flex;
+    flex-direction: column;
+}
+
 .libroIndividual h1 {
     font-family: 'Fugaz One', cursive;
     font-size: 50px;
@@ -87,7 +92,12 @@
     }
     
     .libroIndividual figure {
-        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .libroIndividual figure a {
+        width: 100%;
     }
 
     .libroIndividual img {
