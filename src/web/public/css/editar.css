@@ -1,10 +1,10 @@
 .containerEditar {
     width: 1000px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 .containerEditar h1 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .editarLibroContainer {

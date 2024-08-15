@@ -30,12 +30,10 @@ class BookController {
     }
 
     static async getById(req, res) {
-        const { id } = req.params
-        
         const { username, role } = req.session
 
-        console.log(req.session)
-
+        const { id } = req.params
+        
         try {
             const libro = await BookModel.getById({ id })
 

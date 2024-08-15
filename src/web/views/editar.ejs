@@ -19,9 +19,9 @@
             <!-- Imagen a un costado -->
             <div class="portada">
                 <figure>
-                    <img src="<%- libro.imagen %>" alt="">
+                    <img id="imagen" src="<%- libro.imagen %>" alt="">
                 </figure>
-                <input type="file" name="imagen">
+                <input type="file" id="imagenInput" name="imagen">
             </div>
 
             <!-- Formulario en el otro costado -->
@@ -56,5 +56,6 @@
             </div>
         </form>
     </div>
+    <script src="js/previsualizarImagen.js"></script>
 </body>
 </html>
