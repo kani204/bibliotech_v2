@@ -135,6 +135,11 @@
 
     .editarLibroContainer .datos {
         width: 400px;
+        padding: 0 15px;
+    }
+
+    .containerEditar h1 {
+        padding-left: 15px;
     }
 
     .editarLibroContainer .sinopsis {
