@@ -10,57 +10,51 @@
         
     <header>
         <%- include('partials/navbar.ejs') %>
-      </header>
+    </header>
       
-    <div class="edit-book-container">
+    <div class="containerEditar">
         <h1>Editar Libro</h1>
-        <div class="edicion">
-            <form action="/libros/editar/<%= libro.LibroID %>" method="POST" enctype="multipart/form-data">
-                <div class="form-content">
-                    <!-- Imagen en un costado -->
-                    <div class="book-image-section">
-                        <img src="<%- libro.imagen %>" alt="Imagen del libro">
-                        <input type="file" name="imagen" accept="image/*">
-                    </div>
-                    
-                    <!-- Formulario en el otro costado -->
-                    <div class="book-details-section">
-                        <div class="book-details-columns">
-                            <div class="book-details-column">
-                                <label for="titulo">Título</label>
-                                <input type="text" id="titulo" name="titulo" value="<%= libro.Titulo %>">
-                    
-                                <label for="autor">Autor</label>
-                                <input type="text" id="autor" name="autor" value="<%= libro.Autor %>">
+        <form class="editarLibroContainer" action="/libro/<%- libro.LibroID %>/editar" method="POST" enctype="multipart/form-data">
 
-                                <label for="ISBN">ISBN</label>
-                                <input type="text" id="ISBN" name="ISBN" value="<%= libro.ISBN %>">
-                            </div>
-                            <div class="book-details-column">
-                                <label for="cantidadpaginas">Cantidad de Páginas</label>
-                                <input type="text" id="cantidadpaginas" name="cantidadpaginas" value="<%= libro.CantidadPaginas %>">
-                    
-                                <label for="idioma">Idioma</label>
-                                <input type="text" id="idioma" name="idioma" value="<%= libro.Idioma %>">
-                
-                                <label for="estado">Estado</label>
-                                <select name="estado" id="estado">
-                                    <option value="<%= libro.Idioma %>" style="color: #000;">Disponible</option>
-                                    <option value="<%= libro.Idioma %>" style="color: #000;">Prestado</option>
-                                    <option value="<%= libro.Idioma %>" style="color: #000;">Reservado</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Sinopsis debajo de las columnas del formulario, ocupando todo el ancho del formulario -->
-                        <div class="sinopsis">
-                            <label for="sinopsis">Sinopsis</label>
-                            <textarea id="sinopsis" name="sinopsis"><%= libro.Sinopsis %></textarea>
-                        </div>
+            <!-- Imagen a un costado -->
+            <div class="portada">
+                <figure>
+                    <img src="<%- libro.imagen %>" alt="">
+                </figure>
+                <input type="file" name="imagen">
+            </div>
+
+            <!-- Formulario en el otro costado -->
+            <div class="datos">
+                <div class="row">
+                    <div class="columna">
+                        <h4>Titulo</h4>
+                        <input type="text" value="<%- libro.Titulo %>" placeholder="..." name="titulo">
+                        <h4>Autor</h4>
+                        <input type="text" value="<%- libro.Autor %>" placeholder="..." name="autor">
+                        <h4>ISBN</h4>
+                        <input type="text" value="<%- libro.ISBN %>" placeholder="..." name="isbn">
+                    </div>
+                    <div class="columna">
+                        <h4>Cantidad de paginas</h4>
+                        <input type="text" value="<%- libro.CantidadPaginas %>" placeholder="..." name="cantidad_paginas">
+                        <h4>Idioma</h4>
+                        <input type="text" value="<%- libro.Idioma %>" placeholder="..." name="idioma">
+                        <h4>Estado</h4>
+                        <select name="estado">
+                            <option value="disponible">Disponible</option>
+                            <option value="prestado">Prestado</option>
+                        </select>
                     </div>
                 </div>
-                <button type="submit">Guardar Cambios</button>
-            </form>
-        </div>
+                <h4>Sinopsis</h4>
+                <textarea name="sinopsis" class="sinopsis"><%- libro.Sinopsis %></textarea>
+                <div class="botones">
+                    <a href="/libro/<%- libro.LibroID %>">Cancelar</a>
+                    <button type="submit">Editar</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

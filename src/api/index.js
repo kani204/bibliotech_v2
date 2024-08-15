@@ -1,6 +1,8 @@
 import express from 'express'
 import path from 'node:path'
 import session from 'express-session'
+import multer from 'multer'
+import { randomUUID } from 'node:crypto'
 
 const app = express()
 
@@ -17,6 +19,15 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }))
+
+const storage = multer.diskStorage({
+    destination: path.join(process.cwd(), 'src/web/public/uploads'),
+    filename: (req, file, cb, filename) => {
+        console.log(file);
+        cb(null, randomUUID() + path.extname(file.originalname));
+    }
+}) 
+app.use(multer({ storage }).single('imagen'));
 
 // Rutas
 import indexRouter from './routes/index.routes.js'

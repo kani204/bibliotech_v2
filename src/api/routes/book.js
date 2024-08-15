@@ -17,6 +17,25 @@ bookRouter.get('/libro/:id/editar', async (req, res) => {
     res.render('editar', { title: 'Editar libro', libro: libro[0] })
 })
 
+bookRouter.post('/libro/:id/editar', async (req, res) => {
+    const { id } = req.params
+    const { titulo, autor, isbn, cantidad_paginas, idioma, estado, sinopsis } = req.body
+    const { filename } = req.file
+
+    const db = await connection()
+
+    let sql = `UPDATE libros SET Titulo = '${titulo}', Autor = '${autor}', ISBN = '${isbn}', CantidadPaginas = '${cantidad_paginas}', Idioma = '${idioma}', Estado = '${estado}', Sinopsis = '${sinopsis}' WHERE LibroID = ${id};`
+    if(typeof filename != undefined) sql = `UPDATE libros SET Titulo = '${titulo}', Autor = '${autor}', ISBN = '${isbn}', CantidadPaginas = '${cantidad_paginas}', Idioma = '${idioma}', Estado = '${estado}', Sinopsis = '${sinopsis}', imagen = '/uploads/${filename}' WHERE LibroID = ${id};`
+
+    try {
+        const libro = await db.query(sql)
+        res.redirect('/libro/' + id)
+    } catch(err) {
+        res.status(404).render('error')
+        console.error(err)
+    }
+})
+
 export default bookRouter
 
 // bookRouter.get('/book/all', (req, res) => {
