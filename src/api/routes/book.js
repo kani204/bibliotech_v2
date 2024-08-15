@@ -1,31 +1,38 @@
 import { Router } from 'express'
 const bookRouter = new Router()
 
+// Middlewares
+import { isAdmin } from '../middlewares/auth.js'
+
+// Base de datos
 import connection from '../database.js'
 
+// Controladores
 import BookController from '../controllers/book.controller.js' 
 
 bookRouter.get('/libro/:id', (req, res) => { BookController.getById(req, res) })
 
-bookRouter.get('/libro/:id/editar', async (req, res) => {
+bookRouter.get('/libro/:id/editar', isAdmin, async (req, res) => {
+    const { username, role } = req.session
+
     const { id } = req.params
 
     const db = await connection()
 
     const [libro] = await db.query(`SELECT * FROM libros WHERE LibroID = ${id}`)
     
-    res.render('editar', { title: 'Editar libro', libro: libro[0] })
+    res.render('editar', { title: 'Editar libro', libro: libro[0], username, role })
 })
 
-bookRouter.post('/libro/:id/editar', async (req, res) => {
+bookRouter.post('/libro/:id/editar', isAdmin, async (req, res) => {
     const { id } = req.params
     const { titulo, autor, isbn, cantidad_paginas, idioma, estado, sinopsis } = req.body
-    const { filename } = req.file
+    const file = req.file
 
     const db = await connection()
 
     let sql = `UPDATE libros SET Titulo = '${titulo}', Autor = '${autor}', ISBN = '${isbn}', CantidadPaginas = '${cantidad_paginas}', Idioma = '${idioma}', Estado = '${estado}', Sinopsis = '${sinopsis}' WHERE LibroID = ${id};`
-    if(typeof filename != undefined) sql = `UPDATE libros SET Titulo = '${titulo}', Autor = '${autor}', ISBN = '${isbn}', CantidadPaginas = '${cantidad_paginas}', Idioma = '${idioma}', Estado = '${estado}', Sinopsis = '${sinopsis}', imagen = '/uploads/${filename}' WHERE LibroID = ${id};`
+    if(file) sql = `UPDATE libros SET Titulo = '${titulo}', Autor = '${autor}', ISBN = '${isbn}', CantidadPaginas = '${cantidad_paginas}', Idioma = '${idioma}', Estado = '${estado}', Sinopsis = '${sinopsis}', imagen = '/uploads/${file.filename}' WHERE LibroID = ${id};`
 
     try {
         const libro = await db.query(sql)

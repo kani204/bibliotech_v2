@@ -23,11 +23,10 @@ app.use(session({
 const storage = multer.diskStorage({
     destination: path.join(process.cwd(), 'src/web/public/uploads'),
     filename: (req, file, cb, filename) => {
-        console.log(file);
-        cb(null, randomUUID() + path.extname(file.originalname));
+        cb(null, randomUUID() + path.extname(file.originalname))
     }
 }) 
-app.use(multer({ storage }).single('imagen'));
+app.use(multer({ storage }).single('imagen'))
 
 // Rutas
 import indexRouter from './routes/index.routes.js'
