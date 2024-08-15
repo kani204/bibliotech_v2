@@ -6,6 +6,7 @@ import BookController from '../controllers/book.controller.js'
 
 indexRouter.get('/', (req, res) => { BookController.getHome(req, res) })
 indexRouter.get('/catalogo', (req, res) => { BookController.getAll(req, res) })
+// indexRouter.post('/catalogo/buscar/:title', (req, res) => { BookController.getByTitle(req, res) })
 
 indexRouter.get('/login', (req, res) => {
     res.render('login', { title: 'Iniciar sesión' })

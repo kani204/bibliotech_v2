@@ -39,6 +39,16 @@ class BookModel {
  
         return libro
     }
+
+    static async getByTitle({ title }) {
+        const db = await connection()
+
+        const sql = `SELECT LibroID, Titulo, imagen FROM libros WHERE Titulo LIKE '%${title}%'`
+
+        const [libros] = await db.query(sql)
+
+        return libros
+    }
 }
 
 export default BookModel

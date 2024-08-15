@@ -17,11 +17,12 @@ class BookController {
     static async getAll(req, res) {
         const { username, role } = req.session
 
-        const { generoId } = req.query
+        const { generoId, title } = req.query
 
         try {
-            const libros = await BookModel.getAll({ genre: generoId })   
+            const libros = title ? await BookModel.getByTitle({ title }) : await BookModel.getAll({ genre: generoId })   
 
+            console.log(libros)
             res.status(200).render('catalogo', { title: 'Catalogo', libros, username, role })
         } catch(err) {
             res.status(404).render('error', { title: 'Error 404', err })
@@ -38,6 +39,21 @@ class BookController {
             const libro = await BookModel.getById({ id })
 
             res.status(200).render('libro', { title: 'Libro', libro, username, role })
+        } catch(err) {
+            res.status(404).render('error', { title: 'Error 404', err })
+            console.error(err)
+        }
+    }
+
+    static async getByTitle(req, res) {
+        const { username, role } = req.session
+
+        const { title } = req.params
+
+        try {
+            const libros = await BookModel.getByTitle({ title })
+
+            res.status(200).render('catalogo', { title: 'Libros', libros, username, role })
         } catch(err) {
             res.status(404).render('error', { title: 'Error 404', err })
             console.error(err)

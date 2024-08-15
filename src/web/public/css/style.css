@@ -38,25 +38,30 @@ h2 {
     align-items: center;
     height: 70px;
     width: 1200px;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    z-index: 1000;
+    border: 1px solid rgba(128, 128, 128, 0.314);
+    border-radius: 7px;
+    padding: 0 15px;
+    background-color: #111;
+    transform: translate(-50%, -50%);
     margin: 0 auto;
 }
 
 .navbar-header {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-left: 20px;
 }
 
 .navbar-body {
     display: flex;
     list-style: none;
-    margin-right: 20px;
 }
 
-.navbar-body a {
+.navbar-body a:nth-child(odd) {
     padding: 15px 20px;
-    margin-left: 5px;
-    margin-right: 5px;
     border-radius: 7px;
     transition: background-color 0.3s ease;
 }
@@ -66,6 +71,10 @@ h2 {
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.wrapper {
+    margin-top: 98px;
+}
 
 .container {
     display: grid;
@@ -184,8 +193,57 @@ footer {
     margin: 0 auto;
 }
 
+.catalogo-container .busqueda {
+    padding: 30px 0;
+    background-color: #343434;
+    position: relative;
+}
+
+.catalogo-container .busqueda::before {
+    background-color: #343434;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    margin-left: -50vw;
+    z-index: -1;
+    width: 100vw;
+    content: '';
+}
+
+.catalogo-container .busqueda h3 {
+    font-size: 36px;
+}
+
+.catalogo-container .busqueda input {
+    background-color: #242424;
+    color: #767676;
+    outline: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.catalogo-container .busqueda button {
+    background-color: orange;
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.catalogo-container .busqueda button:hover {
+    background-color: rgb(215, 140, 0);
+}
+
 .catalogo-container h2 {
-    margin-top: 50px;
+    margin-top: 30px;
     font-size: 42px;
 }
 

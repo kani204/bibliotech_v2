@@ -9,66 +9,68 @@
     <header>
       <%- include('partials/navbar.ejs') %>
     </header>
-    <section class="slider">
-      <div class="swiffy-slider slider-nav-autohide slider-nav-autoplay slider-nav-autopause slider-item-snapstart">
-        <ul class="slider-container" style="overflow-x: none;">
-          <% visitados.forEach(visitado => { %>
-            <a href="/libro/<%- visitado.LibroID %>">
-              <li>
-                <div class="texto">
-                  <h3><%- visitado.Titulo %></h3>
-                  <p><%- visitado.Sinopsis %></p>
-                </div>
-                <img src="<%- visitado.imagen %>" alt="<%- visitado.Titulo %>">
-              </li>
-            </a>
-          <% })%>
-        </ul>
-        <div class="slider-indicators">
+    <div class="wrapper">
+      <section class="slider">
+        <div class="swiffy-slider slider-nav-autohide slider-nav-autoplay slider-nav-autopause slider-item-snapstart">
+          <ul class="slider-container" style="overflow-x: none;">
             <% visitados.forEach(visitado => { %>
-              <button></button>
-            <% }) %>
-        </div>
-      </div>
-    </section>
-    <main class="container">
-      <section>
-        <h2>Series en emisión</h2>
-        <div class="series" id="series">
-          <% recientes.forEach(libro => { %>
-            <div class="serie">
-              <figure>
-                <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>"/></a>
-              </figure>
-              <div class="title">
-                <a href="/libro/<%- libro.LibroID %>"><%- libro.Titulo %></a>
-              </div>
-            </div>
-          <% }) %>
+              <a href="/libro/<%- visitado.LibroID %>">
+                <li>
+                  <div class="texto">
+                    <h3><%- visitado.Titulo %></h3>
+                    <p><%- visitado.Sinopsis %></p>
+                  </div>
+                  <img src="<%- visitado.imagen %>" alt="<%- visitado.Titulo %>">
+                </li>
+              </a>
+            <% })%>
+          </ul>
+          <div class="slider-indicators">
+              <% visitados.forEach(visitado => { %>
+                <button></button>
+              <% }) %>
+          </div>
         </div>
       </section>
-      <section>
-        <h2 class="centrar">Populares</h2>
-        <div class="populares">
-          <% gustados.forEach(gustado => { %>
-            <a href="/libro/<%- gustado.LibroID %>">
-              <div class="popular">
-                <h3><%- gustado.Titulo %></h3>
+      <main class="container">
+        <section>
+          <h2>Series en emisión</h2>
+          <div class="series" id="series">
+            <% recientes.forEach(libro => { %>
+              <div class="serie">
                 <figure>
-                  <img
-                    src="<%- gustado.imagen %>"
-                    alt="<%- gustado.Titulo %>"
-                  />
+                  <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>"/></a>
                 </figure>
+                <div class="title">
+                  <a href="/libro/<%- libro.LibroID %>"><%- libro.Titulo %></a>
+                </div>
               </div>
-            </a>
-          <% })%>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p>Desarrollado por alumnos de la EESTN°1</p>
-    </footer>
+            <% }) %>
+          </div>
+        </section>
+        <section>
+          <h2 class="centrar">Populares</h2>
+          <div class="populares">
+            <% gustados.forEach(gustado => { %>
+              <a href="/libro/<%- gustado.LibroID %>">
+                <div class="popular">
+                  <h3><%- gustado.Titulo %></h3>
+                  <figure>
+                    <img
+                      src="<%- gustado.imagen %>"
+                      alt="<%- gustado.Titulo %>"
+                    />
+                  </figure>
+                </div>
+              </a>
+            <% })%>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <p>Desarrollado por alumnos de la EESTN°1</p>
+      </footer>
+    </div>
   </body>
   <script src="js/dropdown.js"></script>
 </html>

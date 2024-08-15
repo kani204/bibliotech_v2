@@ -7,20 +7,29 @@
     <header>
       <%- include('partials/navbar.ejs') %>
     </header>
-    <main class="catalogo-container">
-      <h2>Libros disponibles</h2>
-      <div class="catalogo">
-        <% libros.forEach(libro => { %>
-          <div class="serie">
-            <figure>
-              <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" /></a>
-            </figure>
-            <div class="title">
-              <a href="/libro/<%- libro.LibroID %>"><%- libro.Titulo %></a>
+    <div class="wrapper">
+      <main class="catalogo-container">
+        <section class="busqueda">
+          <h3>Buscar obra...</h3>
+          <form action="/catalogo" method="GET">
+            <input type="text" name="title" placeholder="Titulo...">
+            <button type="submit">Buscar</button>
+          </form>
+        </section>
+        <h2>Libros disponibles</h2>
+        <div class="catalogo">
+          <% libros.forEach(libro => { %>
+            <div class="serie">
+              <figure>
+                <a href="/libro/<%- libro.LibroID %>"><img src="<%- libro.imagen %>" /></a>
+              </figure>
+              <div class="title">
+                <a href="/libro/<%- libro.LibroID %>"><%- libro.Titulo %></a>
+              </div>
             </div>
-          </div>
-        <% })%>
-      </div>
-    </main>
+          <% })%>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
