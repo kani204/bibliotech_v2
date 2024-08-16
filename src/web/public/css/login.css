@@ -40,12 +40,17 @@
     border-radius: 10px;
     padding: 25px;
     width: 400px;
+    max-width: 100%;
     z-index: 100;
     box-shadow: 0px 3px 100px -20px rgba(0,0,0);
 }
 
+.logeoForm h1 {
+    margin-bottom: 20px;
+}
+
 .logeoForm form label {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .logeoForm form button {
@@ -56,6 +61,7 @@
     height: 45px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: 600;
     transition: background-color 0.3s ease;
 }
 
@@ -65,12 +71,15 @@
 
 .logeoForm form input {
     border: none;
-    border-bottom: 2px solid rgb(238, 143, 0);
-    background-color: transparent;
+    background-color: #252525;
     height: 50px;
+    margin-top: 5px;
+    border-radius: 5px;
     font-size: 18px;
-    color: #fff;
+    color: #ffffffb9;
+    padding-left: 10px;
     margin-bottom: 35px;
+    transition: border 0.3s ease;
 }
 
 .logeoForm form input:focus {
@@ -80,7 +89,7 @@
 }
 
 .logeoForm a {
-    margin-top: 10px;
+    margin-top: 20px;
     z-index: 100;
     color: #fff;
 }
