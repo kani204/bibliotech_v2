@@ -16,14 +16,25 @@ const colorSwitch = document.getElementById('sol')
 colorSwitch.addEventListener('click', (elem) => {
     elem.preventDefault()
 
-    const atributte = document.documentElement.getAttribute('tema')
-    console.log(atributte)
+    const atributte = localStorage.getItem('tema')
 
     if(atributte == 'dark') {
+        localStorage.setItem('tema', 'light')
         document.documentElement.setAttribute('tema', 'light')
         colorSwitch.src = '/img/sol-negro.svg'
     } else {
+        localStorage.setItem('tema', 'dark')
         document.documentElement.setAttribute('tema', 'dark')
         colorSwitch.src = '/img/sol.svg'
     }
 })
+
+const tema = localStorage.getItem('tema')
+
+if(tema == 'dark') {
+    document.documentElement.setAttribute('tema', 'dark')
+    colorSwitch.src = '/img/sol.svg'
+} else {
+    document.documentElement.setAttribute('tema', 'light')
+    colorSwitch.src = '/img/sol-negro.svg'
+}
