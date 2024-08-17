@@ -9,20 +9,61 @@
     box-sizing: border-box;
 }
 
+@font-face{
+    font-family: "F51R7G2yy";
+    src: url("../fonts/mudnotoya.woff2")format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --color-fondo: #111;
+    --color-letra: #fff;
+    --color-letra-secundario: #111;
+    --color-subrayado: var(--color-primario);
+    --color-fondo-secundario: #80808050;
+    --color-input: #242424;
+    --color-input-letra: #767676;
+    --color-primario: #ffa500;
+    --color-primario-hover: #d78c00;
+}
+
+[tema='light'] {
+    --color-fondo: rgb(250 250 250);
+    --color-letra: #111;
+    --color-letra-secundario: #fff;
+    --color-subrayado: var(--color-primario);
+    --color-fondo-secundario: rgb(212 212 212);
+    --color-input: rgba(239 239 239);
+    --color-input-letra: rgba(177 182 191);
+    --color-primario: rgb(99 102 241);
+    --color-primario-hover: rgb(77, 79, 219);
+
+    .swiffy-slider .texto {
+        color: #fff!important;
+        text-shadow: -1px 1px 5px rgba(0,0,0,0.75);
+        font-weight: 700;
+    }
+    .swiffy-slider img {
+        opacity: 0.5;
+    }
+}
+
 body {
-    background-color: #111;
-    color: #fff;
-    font-family: system-ui;
+    background-color: var(--color-fondo);
+    color: var(--color-letra);
+    font-family: "F51R7G2yy";
 }
 
 a {
-    color: #fff;
+    color: var(--color-letra);
     text-decoration: none;
 }
 
 h2 {
     font-size: 32px;
-    text-decoration: underline pink;
+    text-decoration: underline var(--color-subrayado);
     margin-bottom: 15px;
 }
 
@@ -42,10 +83,10 @@ h2 {
     top: 5%;
     left: 50%;
     z-index: 1000;
-    border: 1px solid rgba(128, 128, 128, 0.314);
+    border: 1px solid var(--color-fondo-secundario);
     border-radius: 7px;
     padding: 0 15px;
-    background-color: #111;
+    background-color: var(--color-fondo);
     transform: translate(-50%, -50%);
     margin: 0 auto;
 }
@@ -57,6 +98,7 @@ h2 {
 
 .navbar-body {
     display: flex;
+    align-items: center;
     list-style: none;
 }
 
@@ -67,7 +109,7 @@ h2 {
 }
 
 .navbar-body a:hover {
-    background-color: rgb(60, 60, 60);
+    background-color: var(--color-fondo-secundario);
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -195,12 +237,12 @@ footer {
 
 .catalogo-container .busqueda {
     padding: 30px 0;
-    background-color: #343434;
     position: relative;
 }
 
 .catalogo-container .busqueda::before {
-    background-color: #343434;
+    border-bottom: 1px solid var(--color-fondo-secundario);
+    border-top: 1px solid var(--color-fondo-secundario);
     position: absolute;
     height: 100%;
     top: 0;
@@ -216,8 +258,8 @@ footer {
 }
 
 .catalogo-container .busqueda input {
-    background-color: #242424;
-    color: #767676;
+    background-color: var(--color-input);
+    color: var(--color-input-letra);
     outline: none;
     padding: 10px;
     margin-top: 10px;
@@ -226,8 +268,8 @@ footer {
 }
 
 .catalogo-container .busqueda button {
-    background-color: orange;
-    color: #fff;
+    background-color: var(--color-primario);
+    color: var(--color-letra-secundario);
     padding: 10px 25px;
     border: none;
     font-size: 16px;
@@ -239,7 +281,7 @@ footer {
 }
 
 .catalogo-container .busqueda button:hover {
-    background-color: rgb(215, 140, 0);
+    background-color: var(--color-primario-hover);
 }
 
 .catalogo-container h2 {
@@ -269,7 +311,7 @@ footer {
     text-decoration: none;
     display: inline-block;
     font-size: 44px;
-    color: #ffffff71;
+    color: var(--color-input-letra);
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -330,10 +372,13 @@ footer {
 }
 
 .sol {
-    position: absolute;
-    top: 21px;
-    right: 338px;
     width: 28px;
+    cursor: pointer;
+    transition: transform 0.6s ease;
+}
+
+.sol:hover {
+    transform: rotateZ(180deg)
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -348,7 +393,7 @@ footer {
     padding: 5px;
     z-index: 1000;
     cursor: pointer;
-    background-color: rgb(33, 33, 33);
+    background-color: var(--color-fondo);
 }
 
 .dropdown {
@@ -359,7 +404,7 @@ footer {
     padding: 5px;
     z-index: 1000;
     border-radius: 5px;
-    background-color: rgb(33, 33, 33);
+    background-color: var(--color-fondo);
 }
 
 .serie:hover .menu {
@@ -470,7 +515,7 @@ footer {
 @media (max-width: 768px) {
     .navbar-body {
         flex-direction: column;
-        background-color: #111;
+        background-color: var(--color-fondo);
         position: absolute;
         display: none;
         top: 80px;
