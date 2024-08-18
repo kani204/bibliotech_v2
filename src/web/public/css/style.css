@@ -506,6 +506,13 @@ h1, h2, h4, h5, p {
     .container, .navbar, .catalogo-container, .slider, .footerContainer {
         width: 100%;
     }   
+
+    .navbar {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
     .series {
         display: flex;
         flex-direction: column;
