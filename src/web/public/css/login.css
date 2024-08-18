@@ -32,11 +32,15 @@
     flex-direction: column;
 }
 
+.logeoForm h1 {
+    color: #fff;
+}
+
 .logeoForm form {
     display: flex;
     flex-direction: column;
-    background-color: #2b2b2b;
-    color: #fff;
+    background-color: var(--color-fondo);
+    color: var(--color-letra);
     border-radius: 10px;
     padding: 25px;
     width: 400px;
@@ -55,7 +59,7 @@
 
 .logeoForm form button {
     border-radius: 5px;
-    background-color: rgb(228, 114, 0);
+    background-color: var(--color-primario);
     color: #fff;
     padding: 10px;
     height: 45px;
@@ -66,17 +70,17 @@
 }
 
 .logeoForm form button:hover {
-    background-color: rgb(184, 92, 0);
+    background-color: var(--color-primario-hover);
 }
 
 .logeoForm form input {
     border: none;
-    background-color: #252525;
+    background-color: var(--color-input);
     height: 50px;
     margin-top: 5px;
     border-radius: 5px;
     font-size: 18px;
-    color: #ffffffb9;
+    color: var(--color-input-letra);
     padding-left: 10px;
     margin-bottom: 35px;
     transition: border 0.3s ease;
@@ -84,7 +88,7 @@
 
 .logeoForm form input:focus {
     border: none;
-    border-bottom: 2px solid rgb(238, 143, 0);
+    border-bottom: 2px solid var(--color-fondo-secundario);
     outline: none;
 }
 
