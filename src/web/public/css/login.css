@@ -13,7 +13,7 @@
 
 .logeoHeader {
     position: absolute;
-    margin: 40px 0px 0px 70px
+    margin: 40px 0px 0px 40px
 }
 
 .logeoHeader a {
@@ -30,6 +30,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0 10px;
 }
 
 .logeoForm h1 {
@@ -96,4 +97,11 @@
     margin-top: 20px;
     z-index: 100;
     color: #fff;
+    text-align: center;
+}
+
+@media (max-width:440px) {
+    .logeoHeader {
+        margin-left: 10px;
+    }
 }

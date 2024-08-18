@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%- include('partials/head.ejs') %>
+    
   </head>
   <body>
     <header>
@@ -36,6 +37,45 @@
                 </div>      
             </div>
         </div>
+        <canvas id="pdf-container"></canvas>
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.2.146/pdf.min.js"
+        integrity="sha512-hA0/Bv8+ywjnycIbT0xuCWB1sRgOzPmksIv4Qfvqv0DOKP02jSor8oHuIKpweUCsxiWGIl+QaV0E82mPQ7/gyw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+<script>
+	pdfjsLib
+		.getDocument('<%- libro[0].pdf_link %>')
+		.promise.then(function (pdf) {
+			pdf.getPage(1).then(function (page) {
+				// Sets the scale of the page when it's rendered.
+				const scale = 1.5;
+
+				// Returns the viewport for the page, which defines the visible area of the page.
+				const viewport = page.getViewport({ scale: scale });
+
+				// Gets the canvas element on the webpage that will be used to render the PDF page.
+				const canvas = document.getElementById('pdf-container');
+
+				// Gets the 2D rendering context for the canvas element.
+				const context = canvas.getContext('2d');
+
+				// Sets the height and width of the canvas element to match the viewport.
+				canvas.height = viewport.height;
+				canvas.width = viewport.width;
+
+				// Sets the canvas context and viewport for rendering the page.
+				const renderContext = {
+					canvasContext: context,
+					viewport: viewport,
+				};
+
+				// Renders the page on the canvas element with the defined context and viewport.
+				page.render(renderContext);
+			});
+		});
+</script>
     </main>
     </div>
   </body>

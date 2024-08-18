@@ -62,6 +62,7 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-letra);
     font-family: "F51R7G2yy";
+    overflow-x: hidden;
 }
 
 a {
@@ -200,7 +201,7 @@ h1, h2, h4, h5, p {
     height: 730px;
     overflow: hidden;
     border-radius: 7px;
-    margin: 10px;
+    margin: 10px 0 10px 10px;
 }
 
 .popular {
@@ -442,7 +443,7 @@ h1, h2, h4, h5, p {
     transition: transform 0.6s ease;
 }
 
-.sol:hover {
+.sol:active {
     transform: rotateZ(180deg)
 }
 
