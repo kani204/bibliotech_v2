@@ -15,11 +15,12 @@ const colorSwitch = document.getElementById('sol')
 const menuImg = document.getElementById('navbarMenu')
 
 colorSwitch.addEventListener('click', (elem) => {
-    elem.preventDefault()
 
     const atributte = localStorage.getItem('tema')
+    const temaActual = document.documentElement.getAttribute('tema')
 
-    if(atributte == 'dark') {
+    console.log(atributte, temaActual)
+    if(atributte == 'dark' && temaActual == atributte) {
         localStorage.setItem('tema', 'light')
         document.documentElement.setAttribute('tema', 'light')
         menuImg.src = '/img/menu-negro.png'
@@ -31,13 +32,3 @@ colorSwitch.addEventListener('click', (elem) => {
         colorSwitch.src = '/img/sol.svg'
     }
 })
-
-const tema = localStorage.getItem('tema')
-
-if(tema == 'dark') {
-    document.documentElement.setAttribute('tema', 'light')
-    colorSwitch.src = '/img/sol-negro.svg'
-} else {
-    document.documentElement.setAttribute('tema', 'dark')
-    colorSwitch.src = '/img/sol.svg'
-}

@@ -52,6 +52,11 @@
     margin: 5px 2.5px 0;
 }
 
+.libroContainer .pdf {
+    width: 1200px;
+    height: 100vh;
+    margin-top: 20px;
+}
 
 @media (max-width: 575.98px) {
     .libroContainer, .navbar {
