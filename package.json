@@ -13,10 +13,12 @@
   "dependencies": {
     "bcrypt": "5.0.0",
     "ejs": "^3.1.10",
-    "electron": "^31.3.1",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "electron": "^31.4.0"
   }
 }
