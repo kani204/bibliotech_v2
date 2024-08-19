@@ -73,6 +73,18 @@
     display: none;
 }
 
+.logeoForm .error {
+    margin-top: 35px;
+    text-align: center;
+    display: block;
+    padding: 15px 0;
+    background: #f37f7f;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e50000;
+    cursor: pointer;
+}
+
 .logeoForm form button {
     border-radius: 5px;
     background-color: var(--color-primario);

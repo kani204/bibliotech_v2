@@ -18,7 +18,9 @@ class UserController {
         try {
             const result = await UserModel.login({ password, email })
         
-            if(result == 'invalid_password' || result == 'user_not_exist') return res.redirect('/login')
+            if(result == 'invalid_password' || result == 'user_not_exist') {
+                return res.redirect('/login?error=' + result)
+            }
 
             req.session.username = result[0].username
             req.session.role = result[0].role

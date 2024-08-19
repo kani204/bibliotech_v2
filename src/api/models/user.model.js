@@ -20,7 +20,7 @@ class UserModel {
         const db = await connection()
 
         const [user] = await db.query(`SELECT r.NombreRol as role, u.Contrasenia as password, u.Nombre as username FROM usuarios u JOIN roles r ON u.RollID = r.RollID  WHERE u.CorreoElectronico = '${email}';`)
-        if(!user) return 'user_not_exist'
+        if(user.length == 0) return 'user_not_exist'
 
         const validPassword = await compare(password, user[0].password)
         if(!validPassword) return 'invalid_password'

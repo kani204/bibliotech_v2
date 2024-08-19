@@ -1,7 +1,7 @@
 const config = {
     USERNAME_MIN: 3,
     EMAIL_REGEX: /[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}/g,
-    MESSAGE_MIN: 10
+    MESSAGE_MIN: 3
 }
 
 const notify = document.getElementById('notifyMessage')
@@ -24,11 +24,6 @@ formButton.addEventListener('click', (elem) => {
     
     if(usernameLength > config.USERNAME_MIN && messageLength > config.MESSAGE_MIN && emailLength > 0 && invalidEmail == false) {
         document.getElementById('registerForm').submit()
-        notify.className = 'notify show'
-
-        setTimeout(() => {
-            notify.className = 'notify hidden'
-        }, 5000)
     }
 })
 
@@ -51,7 +46,6 @@ function validateUsername({ username }) {
     const lengthError = document.getElementById('lengthError')
 
     if(username.length <= config.USERNAME_MIN && username.length > 0) {
-        usernameInput.className = 'error'
         lengthError.className = 'show'
         
         return
@@ -66,7 +60,6 @@ function validateEmail({ email }) {
 
     const isValid = email.match(config.EMAIL_REGEX)
     if(!isValid && email.length > 0) {
-        emailInput.className = 'error'
         emailMessageError.className = 'show'
 
         invalidEmail = true
@@ -83,7 +76,6 @@ function validateMessage({ message }) {
     const messageMessageError = document.getElementById('messageMessageError')
 
     if(message.length <= config.MESSAGE_MIN && message.length > 0) {
-        messageInput.className = 'error'
         messageMessageError.className = 'show'
 
         return

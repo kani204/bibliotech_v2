@@ -14,8 +14,9 @@
             <figure>
                 <img src="<%- libro[0].imagen %>">
 
-                <% if(typeof role != 'undefined') { %>
+                <%  if(role == 'admin') { %>
                   <!-- Botón para editar el libro -->
+
                   <a href="/libro/<%- libro[0].LibroID %>/editar" class="editar-libro-btn">Editar Libro</a>
                 <% } %>
             </figure>

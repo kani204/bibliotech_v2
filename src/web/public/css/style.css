@@ -46,7 +46,7 @@
         font-weight: 700;
     }
     .swiffy-slider img {
-        filter: blur(3px);
+        filter: brightness(0.4);
     }
     .popular h3 {
         background-color: var(--color-fondo);

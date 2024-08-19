@@ -59,8 +59,8 @@
 }
 
 @media (max-width: 575.98px) {
-    .libroContainer, .navbar {
-        width: 100%;
+    .libroContainer, .navbar, .pdf {
+        width: 100%!important;
     }   
 
     .libroIndividual {
@@ -83,8 +83,8 @@
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) { 
-    .libroContainer, .navbar {
-        width: 540px;
+    .libroContainer, .navbar, .pdf {
+        width: 540px!important;
         margin: 0 auto;
     }
 
@@ -111,14 +111,14 @@
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) { 
-    .libroContainer, .navbar {
-        width: 720px;
+    .libroContainer, .navbar, .pdf {
+        width: 720px!important;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .libroContainer, .navbar {
-        width: 960px;
+    .libroContainer, .navbar, .pdf {
+        width: 960px!important;
     }
 }
 
