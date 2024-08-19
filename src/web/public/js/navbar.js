@@ -1,5 +1,8 @@
 const navbarBody = document.getElementById('navbarBody')
 const navbarMenu = document.getElementById('navbarMenu')
+const fondo = document.getElementById('logeoFondoImg')
+const menuImg = document.getElementById('navbarMenu')
+const colorSwitch = document.getElementById('sol') 
 
 navbarMenu.addEventListener('click', (elem) => {
     const display = navbarBody.style.display
@@ -11,24 +14,24 @@ navbarMenu.addEventListener('click', (elem) => {
     }
 })
 
-const colorSwitch = document.getElementById('sol')
-const menuImg = document.getElementById('navbarMenu')
+// colorSwitch.addEventListener('click', (e) => {
+//     let temaActual = localStorage.getItem('tema')
 
-colorSwitch.addEventListener('click', (elem) => {
+//     if(temaActual == 'light') {
+//         document.documentElement.setAttribute('tema', 'dark')
+        
+//         menuImg.src = '/img/menu-negro.png'
+//         colorSwitch.src = '/img/sol.svg'
+//         if(fondo) fondo.src = '/img/fondo.jpg'
 
-    const atributte = localStorage.getItem('tema')
-    const temaActual = document.documentElement.getAttribute('tema')
+//         localStorage.setItem('tema', 'dark')
+//     } else {
+//         document.documentElement.setAttribute('tema', 'light')
 
-    console.log(atributte, temaActual)
-    if(atributte == 'dark' && temaActual == atributte) {
-        localStorage.setItem('tema', 'light')
-        document.documentElement.setAttribute('tema', 'light')
-        menuImg.src = '/img/menu-negro.png'
-        colorSwitch.src = '/img/sol-negro.svg'
-    } else {
-        localStorage.setItem('tema', 'dark')
-        document.documentElement.setAttribute('tema', 'dark')
-        menuImg.src = '/img/menu.png'
-        colorSwitch.src = '/img/sol.svg'
-    }
-})
+//         menuImg.src = '/img/menu.png'
+//         colorSwitch.src = '/img/sol-negro.svg'
+//         if(fondo) fondo.src = '/img/fondo-claro.jpg'
+
+//         localStorage.setItem('tema', 'light')
+//     }
+// })
