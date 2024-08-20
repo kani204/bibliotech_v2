@@ -1,5 +1,6 @@
 const sol = document.getElementById('sol')
 // const navbarMenu = document.getElementById('v')
+const logo = document.getElementById('logo')
 
 let currentTheme = getDefaultTheme();
 setTheme(currentTheme);
@@ -23,8 +24,12 @@ function setTheme(theme) {
 
   if(theme == 'light') {
     sol.src = '/img/sol-negro.svg'
+    logo.src = '/img/logo.png'
   }
-  if(theme == 'dark') sol.src = '/img/sol.svg'
+  if(theme == 'dark') {
+    sol.src = '/img/sol.svg'
+    logo.src = '/img/logo-negro.png'
+  }
 }
 
 function getSavedTheme() {
@@ -34,8 +39,14 @@ function getSavedTheme() {
 function saveTheme(theme) {
   localStorage.setItem('tema', theme)
 
-  if(theme == 'light') sol.src = '/img/sol-negro.svg'
-  if(theme == 'dark') sol.src = '/img/sol.svg'
+  if(theme == 'light') {
+    sol.src = '/img/sol-negro.svg'
+    logo.src = '/img/logo.png'
+  }
+  if(theme == 'dark') {
+    sol.src = '/img/sol.svg'
+    logo.src = '/img/logo-negro.png'
+  }
 }
 
 function getDefaultTheme() {

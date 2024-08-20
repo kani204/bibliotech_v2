@@ -27,4 +27,8 @@ indexRouter.get('/perfil', (req, res) => {
     res.redirect('/')
 })
 
+indexRouter.get('/panel', (req, res) => {
+    res.redirect('/')
+})
+
 export default indexRouter
