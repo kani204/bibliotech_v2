@@ -49,6 +49,34 @@ class BookModel {
 
         return libros
     }
+
+    static async createBook({ book }) {
+        const { titulo, autor, isbn, fechaLanzamiento, cantidadPaginas, editorial, sinopsis, imagen, pdf_link, idioma, estado, visitas, gustados } = book
+
+        const db = await connection()
+
+        const sql = `INSERT INTO libros ('Titulo', 'Autor', 'ISBN', 'FechaLanzamiento', 'CantidadPaginas', 'Editorial', 'Sinopsis', 'imagen', 'pdf_link', 'Idioma', 'Estado', 'Visitas', 'Gustados') VALUES ('${titulo}', '${autor}', '${isbn}', '${fechaLanzamiento}', '${cantidadPaginas}', '${editorial}', '${sinopsis}', '${imagen}', '${pdf_link}', '${idioma}', '${estado}', '${visitas}', '${gustados}');`
+
+        try {
+            const libro = await db.query(sql)
+            return libro
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
+    static async deleteById({ id }) {
+        const db = await connection()
+
+        const sql = `DELETE FROM libros WHERE LibroID = '${id}'`
+
+        try {
+            await db.query(sql)
+            return 'deleted'
+        } catch(err) {
+            console.log(err)
+        }
+    }
 }
 
 export default BookModel
