@@ -32,16 +32,21 @@ app.use(multer({ storage }).single('imagen'))
 import indexRouter from './routes/index.routes.js'
 import bookRouter from './routes/book.js'
 import userRouter from './routes/user.routes.js'
+import panelRouter from './routes/panel.routes.js'
 
 app.use(indexRouter)
 app.use(bookRouter)
 app.use(userRouter)
+app.use(panelRouter)
 
 // Estaticos
 app.use(express.static(path.join(process.cwd(), 'src/web/public')))
 app.use('/catalogo', express.static(path.join(process.cwd(), 'src/web/public')))
 app.use('/libro', express.static(path.join(process.cwd(), 'src/web/public')))
 app.use('/libro/:id', express.static(path.join(process.cwd(), 'src/web/public')))
+app.use('/panel', express.static(path.join(process.cwd(), 'src/web/public')))
+app.use('/panel/libros', express.static(path.join(process.cwd(), 'src/web/public')))
+app.use('/panel/libros/:id', express.static(path.join(process.cwd(), 'src/web/public')))
 
 
 

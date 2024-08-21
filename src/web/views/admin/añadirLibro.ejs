@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/admin/head.ejs') %>
+	</head>
+	<body>
+		<div class="panel">
+            <%- include('../partials/admin/sidebar.ejs') %>
+            <main>
+                <%- include('../partials/admin/navbar.ejs') %>
+                <div class="contenedor">
+                   <h1>Añadir Libro</h1>
+                    <form class="editarLibroContainer" action="/libro/agregar" method="POST" enctype="multipart/form-data">
+
+                        <!-- Imagen a un costado -->
+                        <div class="portada">
+                            <figure>
+                                <img id="imagen" src="https://edit.org/images/cat/portadas-libros-big-2019101610.jpg" alt="">
+                            </figure>
+                            <input type="file" id="imagenInput" name="imagen">
+                        </div>
+
+                        <!-- Formulario en el otro costado -->
+                        <div class="datos">
+                            <div class="row">
+                                <div class="columna">
+                                    <h4>Titulo</h4>
+                                    <input type="text" placeholder=". . ." name="titulo">
+                                    <h4>Autor</h4>
+                                    <input type="text" placeholder=". . ." name="autor">
+                                    <h4>ISBN</h4>
+                                    <input type="text" placeholder=". . ." name="isbn">
+                                </div>
+                                <div class="columna">
+                                    <h4>Cantidad de paginas</h4>
+                                    <input type="text" placeholder=". . ." name="cantidad_paginas">
+                                    <h4>Idioma</h4>
+                                    <input type="text" placeholder=". . ." name="idioma">
+                                    <h4>Estado</h4>
+                                    <select name="estado">
+                                        <option value="disponible">Disponible</option>
+                                        <option value="prestado">Prestado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h4>Sinopsis</h4>
+                            <textarea name="sinopsis" placeholder=". . ." class="sinopsis"></textarea>
+                            <div class="botones">
+                                <a href="/panel/libros">Cancelar</a>
+                                <button type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <footer class="footerContainer">
+                    <%- include('../partials/footer.ejs') %>
+                </footer>
+            </main>
+        </div>
+
+        <script src="js/cambiarTema.js"></script>
+	</body>
+</html>
+
+<script src="js/previsualizarImagen.js"></script>

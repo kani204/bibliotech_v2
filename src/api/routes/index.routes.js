@@ -17,17 +17,9 @@ indexRouter.get('/registro', (req, res) => {
     res.render('register', { title: 'Registro' })
 })
 
-indexRouter.get('/panel', (req, res) => {
-    res.render('panel', { title: 'Panel' })
-})
-
 indexRouter.get('/perfil', (req, res) => {
     req.session.destroy()
 
-    res.redirect('/')
-})
-
-indexRouter.get('/panel', (req, res) => {
     res.redirect('/')
 })
 

@@ -43,6 +43,8 @@ bookRouter.post('/libro/:id/editar', isAdmin, async (req, res) => {
     }
 })
 
+bookRouter.post('/libro/:id/eliminar', (req, res) => { BookController.deleteById(req, res) })
+
 export default bookRouter
 
 // bookRouter.get('/book/all', (req, res) => {

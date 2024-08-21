@@ -1,7 +1,7 @@
 import connection from '../database.js'
 
 class BookModel {
-    static async getAll({ genre }) {
+    static async getAll({ genre } = {}) {
         const db = await connection()
 
         let sql = "SELECT * FROM libros;"
@@ -68,14 +68,9 @@ class BookModel {
     static async deleteById({ id }) {
         const db = await connection()
 
-        const sql = `DELETE FROM libros WHERE LibroID = '${id}'`
+        const sql = `DELETE FROM libros WHERE LibroID = '${id}';`
 
-        try {
-            await db.query(sql)
-            return 'deleted'
-        } catch(err) {
-            console.log(err)
-        }
+        await db.query(sql)
     }
 }
 
