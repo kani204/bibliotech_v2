@@ -7,7 +7,7 @@ class PanelController {
         const { username, role } = req.session
         const libros = await BookModel.getAll()
 
-        res.render('admin/librosPanel', { title: 'Panel - Libros', user: { username, role }, libros })
+        res.render('admin/librosPanel', { title: 'Panel - Libros', username, role, libros })
         
     }
 
@@ -20,7 +20,7 @@ class PanelController {
 
         const [libro] = await db.query(`SELECT * FROM libros WHERE LibroID = ${id}`)
         
-        res.render('admin/editarLibro', { title: 'Editar libro', libro: libro[0], user: { username, role } })
+        res.render('admin/editarLibro', { title: 'Editar libro', libro: libro[0], username, role })
     }
 }
 

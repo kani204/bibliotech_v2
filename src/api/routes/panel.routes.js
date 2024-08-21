@@ -18,19 +18,19 @@ panelRouter.get('/panel/libros/:id/editar', async (req, res) => { PanelControlle
 panelRouter.get('/panel/libros/agregar', (req, res) => {
     const { username, role } = req.session
 
-    res.render('admin/añadirLibro', { title: 'Panel - Libros', user: { username, role } })
+    res.render('admin/añadirLibro', { title: 'Panel - Libros', username, role })
 })
 
 panelRouter.get('/panel/usuarios', (req, res) => {
     const { username, role } = req.session
 
-    res.render('admin/usuariosPanel', { title: 'Panel - Usuarios', user: { username, role } })
+    res.render('admin/usuariosPanel', { title: 'Panel - Usuarios', username, role })
 })
 
 panelRouter.get('/panel/categorias', (req, res) => {
     const { username, role } = req.session
 
-    res.render('admin/categoriasPanel', { title: 'Panel - Categorias', user: { username, role } })
+    res.render('admin/categoriasPanel', { title: 'Panel - Categorias', username, role })
 })
 
 export default panelRouter
