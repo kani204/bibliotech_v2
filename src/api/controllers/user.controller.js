@@ -37,6 +37,11 @@ class UserController {
         const { userId } = req.session
         const { libroId } = req.params
 
+        if(typeof userId == 'undefined') {
+            res.statusMessage = 'user_not_logged'
+            return res.status(404).end()
+        }
+
         try {
             const response = await UserModel.añadirFavorito({ userId,libroId })
 
@@ -55,6 +60,11 @@ class UserController {
     static async añadirGustado(req, res) {
         const { userId } = req.session
         const { libroId } = req.params
+
+        if(typeof userId == 'undefined') {
+            res.statusMessage = 'user_not_logged'
+            return res.status(404).end()
+        }
 
         try {
             const response = await UserModel.añadirGustado({ userId,libroId })
