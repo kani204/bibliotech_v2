@@ -7,4 +7,6 @@ userRouter.post('/usuario/logear', async (req, res) => { UserController.login(re
 
 userRouter.post('/usuario/crear', async (req, res) => { UserController.register(req, res) })
 
+userRouter.post('/favorito/:libroId/agregar', async (req, res) => { UserController.añadirFavorito(req, res) })
+
 export default userRouter

@@ -1,6 +1,8 @@
 import { Router } from 'express'
 const indexRouter = new Router()
 
+import connection from '../database.js'
+
 // Controladores
 import BookController from '../controllers/book.controller.js'
 
@@ -17,10 +19,14 @@ indexRouter.get('/registro', (req, res) => {
     res.render('register', { title: 'Registro' })
 })
 
-indexRouter.get('/perfil', (req, res) => {
-    req.session.destroy()
+indexRouter.get('/perfil', async (req, res) => {
+    const { username, role, userId } = req.session
+    
+    const db = await connection()
 
-    res.redirect('/')
+    const [verLuego] = await db.query(`SELECT l.LibroID, l.Titulo, l.imagen FROM libros l JOIN favoritos f ON f.LibroID = l.LibroID WHERE f.UsuarioID = ${userId}`)
+    
+    res.render('perfil', { title: 'Perfil', verLuego, username, role, userId })
 })
 
 export default indexRouter

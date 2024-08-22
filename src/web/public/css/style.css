@@ -2,6 +2,7 @@
 @import url('login.css');
 @import url('editar.css');
 @import url('panel.css');
+@import url('perfil.css');
 
 * {
     margin: 0;

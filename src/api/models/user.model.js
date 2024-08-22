@@ -19,13 +19,22 @@ class UserModel {
     static async login({ password, email }) {
         const db = await connection()
 
-        const [user] = await db.query(`SELECT r.NombreRol as role, u.Contrasenia as password, u.Nombre as username FROM usuarios u JOIN roles r ON u.RollID = r.RollID  WHERE u.CorreoElectronico = '${email}';`)
+        const [user] = await db.query(`SELECT r.NombreRol as role, u.Contrasenia as password, u.Nombre as username, u.UsuarioID as userId FROM usuarios u JOIN roles r ON u.RollID = r.RollID  WHERE u.CorreoElectronico = '${email}';`)
         if(user.length == 0) return 'user_not_exist'
 
         const validPassword = await compare(password, user[0].password)
         if(!validPassword) return 'invalid_password'
 
         return user
+    }
+
+    static async añadirFavorito({ userId, libroId }) {
+        const db = await connection()
+
+        const [verify] = await db.query(`SELECT * FROM favoritos WHERE UsuarioID = '${userId}' AND LibroID = '${libroId}';`)
+        if(verify.length > 0) return 'duplicated'
+
+        await db.query(`INSERT INTO favoritos (UsuarioID, LibroID) VALUES ('${userId}', '${libroId}');`)
     }
 }
 

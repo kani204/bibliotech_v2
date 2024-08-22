@@ -39,15 +39,15 @@
             </div>
         </div>
         <div class="acciones">
-          <div class="accion" id="espera">
+          <div class="accion" id="espera" data-libroId="<%- libro[0].LibroID %>">
             <i class="fa-solid fa-star"></i>
             <p>Ver luego</p>
           </div>
-          <div class="accion" id="gustado">
+          <div class="accion" id="gustado" data-libroId="<%- libro[0].LibroID %>">
             <i class="fa-solid fa-heart"></i>
             <p>Me gusta</p>
           </div>
-          <div class="accion" id="seguido">
+          <div class="accion" id="seguido" data-libroId="<%- libro[0].LibroID %>">
             <i class="fa-solid fa-check"></i>
             <p>Seguir</p>
           </div>
@@ -58,5 +58,21 @@
       <%- include('partials/footer.ejs') %>
     </footer>
     </div>
+    <script>
+      const botonVerLuego = document.getElementById('espera')
+
+      botonVerLuego.addEventListener('click', () => {
+        const libroId = botonVerLuego.getAttribute('data-libroId')
+        fetch('http://localhost:3000/favorito/' + libroId + '/agregar', { method: 'post' })
+        .then(response => {
+          if(response.ok) {
+            console.log(response)
+            console.log('añadido a favoritos')
+          } else {
+            console.log(response)
+          }
+        })
+      })
+    </script>
   </body>
 </html>
