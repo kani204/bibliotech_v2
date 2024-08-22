@@ -38,6 +38,10 @@
                 </div>      
             </div>
         </div>
+        <div class="notificacion" id="notificacion">
+          <i class="fa-solid fa-x"></i>
+          <p>Este libro ya esta añadido a tu lista de ver luego.</p>
+        </div>
         <div class="acciones">
           <div class="accion" id="espera" data-libroId="<%- libro[0].LibroID %>">
             <i class="fa-solid fa-star"></i>
@@ -58,21 +62,6 @@
       <%- include('partials/footer.ejs') %>
     </footer>
     </div>
-    <script>
-      const botonVerLuego = document.getElementById('espera')
-
-      botonVerLuego.addEventListener('click', () => {
-        const libroId = botonVerLuego.getAttribute('data-libroId')
-        fetch('http://localhost:3000/favorito/' + libroId + '/agregar', { method: 'post' })
-        .then(response => {
-          if(response.ok) {
-            console.log(response)
-            console.log('añadido a favoritos')
-          } else {
-            console.log(response)
-          }
-        })
-      })
-    </script>
+    <script src="js/acciones.js"></script>
   </body>
 </html>

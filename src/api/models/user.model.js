@@ -36,6 +36,24 @@ class UserModel {
 
         await db.query(`INSERT INTO favoritos (UsuarioID, LibroID) VALUES ('${userId}', '${libroId}');`)
     }
+    
+    static async añadirGustado({ userId, libroId }) {
+        const db = await connection()
+
+        const [verify] = await db.query(`SELECT * FROM gustados WHERE UsuarioID = '${userId}' AND LibroID = '${libroId}';`)
+        if(verify.length > 0) return 'duplicated'
+
+        await db.query(`INSERT INTO gustados (UsuarioID, LibroID) VALUES ('${userId}', '${libroId}');`)
+    }
+
+    static async añadirSeguido({ userId, libroId }) {
+        const db = await connection()
+
+        const [verify] = await db.query(`SELECT * FROM seguidos WHERE UsuarioID = '${userId}' AND LibroID = '${libroId}';`)
+        if(verify.length > 0) return 'duplicated'
+
+        await db.query(`INSERT INTO seguidos (UsuarioID, LibroID) VALUES ('${userId}', '${libroId}');`)
+    }
 }
 
 export default UserModel

@@ -39,12 +39,58 @@ class UserController {
 
         try {
             const response = await UserModel.añadirFavorito({ userId,libroId })
-            
-            if(response == 'duplicated') return res.status(404).send('duplicated')
+
+            if(response == 'duplicated') {
+                res.statusMessage = response
+                return res.status(404).end()
+            }
+
+            res.status(200).send('added')
+        } catch(err) {
+            res.status(404).send('hola')
+            console.error(err)
+        }
+    }
+
+    static async añadirGustado(req, res) {
+        const { userId } = req.session
+        const { libroId } = req.params
+
+        try {
+            const response = await UserModel.añadirGustado({ userId,libroId })
+
+            if(response == 'duplicated') {
+                res.statusMessage = response
+                return res.status(404).end()
+            }
 
             res.status(200).send('added')
         } catch(err) {
             res.status(404).send(err)
+            console.error(err)
+        }
+    }
+
+    static async añadirSeguido(req, res) {
+        const { userId } = req.session
+        const { libroId } = req.params
+
+        if(typeof userId == 'undefined') {
+            res.statusMessage = 'user_not_logged'
+            return res.status(404).end()
+        }
+
+        try {
+            const response = await UserModel.añadirSeguido({ userId,libroId })
+
+            if(response == 'duplicated') {
+                res.statusMessage = response
+                return res.status(404).end()
+            }
+
+            res.status(200).send('added')
+        } catch(err) {
+            res.status(404).send('hola')
             console.error(err)
         }
     }

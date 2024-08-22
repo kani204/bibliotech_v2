@@ -48,8 +48,6 @@ app.use('/panel', express.static(path.join(process.cwd(), 'src/web/public')))
 app.use('/panel/libros', express.static(path.join(process.cwd(), 'src/web/public')))
 app.use('/panel/libros/:id', express.static(path.join(process.cwd(), 'src/web/public')))
 
-
-
 // Iniciar servidor
 app.listen(port, () => {
     console.log('Servidor encendido')
