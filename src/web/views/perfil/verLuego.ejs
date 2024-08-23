@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+
+    <main class="perfil">
+        <section class="info">
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png">
+            <h3><%- username %></h3>
+        </section>
+        <section class="libros">
+            <article>
+                <h2>Libros que pienso leer</h2>
+                <div class="librosContenedor">
+                    <% libros.forEach(libro => {%>
+                        <div class="libro">
+                            <figure>
+                                <a href="/libro/<%- libro.LibroID %>">
+                                    <img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>">
+                                </a>
+                            </figure>
+                            <a href="/libro/<%- libro.LibroID %>">
+                                <p><%- libro.Titulo %></p>
+                            </a>
+                        </div>
+                    <%})%>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="footerContainer">
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>

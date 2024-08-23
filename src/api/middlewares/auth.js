@@ -5,3 +5,11 @@ export const isAdmin = (req, res, next) => {
         res.redirect('/login')
     }
 }
+
+export const isLogged = (req, res, next) => {
+    if(req.session.username == '' || typeof req.session.username == 'undefined') {
+        res.redirect('/login')
+    } else {
+        next()
+    }
+}

@@ -17,12 +17,14 @@ class BookController {
     static async getAll(req, res) {
         const { username, role } = req.session
 
-        const { generoId, title } = req.query
+        let { generoId, title } = req.query
 
         try {
-            const libros = title ? await BookModel.getByTitle({ title }) : await BookModel.getAll({ genre: generoId })   
+            // const libros = title ? await BookModel.getByTitle({ title }) : await BookModel.getAll({ title, genre: generoId }) 
+            const libros = await BookModel.getAll({ title, genre: generoId })   
+            const categorias = await BookModel.getCategories()
 
-            res.status(200).render('catalogo', { title: 'Catalogo', libros, username, role })
+            res.status(200).render('catalogo', { title: 'Catalogo', libros, categorias, username, role, generoId })
         } catch(err) {
             res.status(404).render('error', { title: 'Error 404', err })
             console.error(err)

@@ -14,9 +14,39 @@
         <section class="libros">
             <article>
                 <h2>Mis me gusta</h2>
+                <div class="librosContenedor">
+                    <% gustados.forEach(libro => {%>
+                        <div class="libro">
+                            <figure>
+                                <a href="/libro/<%- libro.LibroID %>">
+                                    <img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>">
+                                </a>
+                            </figure>
+                            <a href="/libro/<%- libro.LibroID %>">
+                                <p><%- libro.Titulo %></p>
+                            </a>
+                        </div>
+                    <%})%>
+                </div>
+                <a href="/perfil/gustados" class="botonVerTodo">Ver todo</a>
             </article>
             <article>
                 <h2>Mis seguidos</h2>
+                <div class="librosContenedor">
+                    <% seguidos.forEach(libro => {%>
+                        <div class="libro">
+                            <figure>
+                                <a href="/libro/<%- libro.LibroID %>">
+                                    <img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>">
+                                </a>
+                            </figure>
+                            <a href="/libro/<%- libro.LibroID %>">
+                                <p><%- libro.Titulo %></p>
+                            </a>
+                        </div>
+                    <%})%>
+                </div>
+                <a href="/perfil/seguidos" class="botonVerTodo">Ver todo</a>
             </article>
             <article>
                 <h2>Ver mas tarde</h2>
@@ -24,12 +54,17 @@
                     <% verLuego.forEach(libro => {%>
                         <div class="libro">
                             <figure>
-                                <img src="<%- libro.imagen %>" alt="">
+                                <a href="/libro/<%- libro.LibroID %>">
+                                    <img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>">
+                                </a>
                             </figure>
-                            <p><%- libro.Titulo %></p>
+                            <a href="/libro/<%- libro.LibroID %>">
+                                <p><%- libro.Titulo %></p>
+                            </a>
                         </div>
                     <%})%>
                 </div>
+                <a href="/perfil/ver-luego" class="botonVerTodo">Ver todo</a>
             </article>
         </section>
     </main>

@@ -1,11 +1,26 @@
 import connection from '../database.js'
 
 class BookModel {
-    static async getAll({ genre } = {}) {
+    static async getAll({ title, genre }) {
         const db = await connection()
 
-        let sql = "SELECT * FROM libros;"
-        if(genre) sql = `SELECT l.LibroID, l.Titulo, l.imagen FROM libros l JOIN libros_categorias lc ON l.LibroID = lc.LibroID JOIN categorias c ON lc.CategoriaID = c.CategoriaID WHERE c.CategoriaID = ${genre}`
+        let sql
+
+        if(!title && !genre) {
+            sql = `SELECT * FROM libros`
+        }
+
+        if(title) {
+            sql = `SELECT * FROM libros WHERE Titulo LIKE '%${title}%'`
+        }
+
+        if(genre && genre != 'off') {
+            sql = `SELECT l.LibroID, l.Titulo, l.imagen FROM libros l JOIN libros_categorias lc ON l.LibroID = lc.LibroID JOIN categorias c ON lc.CategoriaID = c.CategoriaID WHERE c.CategoriaID = '${genre}'`
+        }
+
+        if(title && genre != 'off') {
+            sql = `SELECT l.LibroID, l.Titulo, l.imagen FROM libros l JOIN libros_categorias lc ON l.LibroID = lc.LibroID JOIN categorias c ON lc.CategoriaID = c.CategoriaID WHERE c.CategoriaID = '${genre}' AND l.Titulo LIKE '%${title}%'`
+        }
 
         const [libros] = await db.query(sql)
 
@@ -28,6 +43,16 @@ class BookModel {
             visitados,
             gustados
         }
+    }
+
+    static async getCategories() {
+        const db = await connection()
+
+        const sql = 'SELECT c.CategoriaID as id, c.NombreCategoria as name FROM categorias c'
+
+        const [categorias] = await db.query(sql)
+
+        return categorias
     }
 
     static async getById({ id }) {
