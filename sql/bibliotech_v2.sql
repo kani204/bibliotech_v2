@@ -1,15 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-08-2024 a las 01:25:10
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 23-08-2024 a las 19:23:19
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `bibliotech_v2`
@@ -27,7 +33,7 @@ CREATE TABLE `calificaciones` (
   `LibroID` int(11) NOT NULL,
   `Calificacion` int(1) NOT NULL CHECK (`Calificacion` >= 1 and `Calificacion` <= 5),
   `FechaCalificacion` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -38,7 +44,7 @@ CREATE TABLE `calificaciones` (
 CREATE TABLE `categorias` (
   `CategoriaID` int(11) NOT NULL,
   `NombreCategoria` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -73,7 +79,7 @@ CREATE TABLE `comentarios` (
   `LibroID` int(11) NOT NULL,
   `Comentario` text NOT NULL,
   `FechaComentario` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -85,7 +91,44 @@ CREATE TABLE `favoritos` (
   `FavoritoID` int(11) NOT NULL,
   `UsuarioID` int(11) NOT NULL,
   `LibroID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `favoritos`
+--
+
+INSERT INTO `favoritos` (`FavoritoID`, `UsuarioID`, `LibroID`) VALUES
+(1, 3, 3),
+(2, 3, 4),
+(9, 3, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gustados`
+--
+
+CREATE TABLE `gustados` (
+  `GustadoID` int(11) NOT NULL,
+  `UsuarioID` int(11) DEFAULT NULL,
+  `LibroID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `gustados`
+--
+
+INSERT INTO `gustados` (`GustadoID`, `UsuarioID`, `LibroID`) VALUES
+(3, 3, 4),
+(4, 0, 4),
+(5, 3, 6),
+(6, 3, 1),
+(7, 3, 2),
+(8, 3, 13),
+(9, 3, 8),
+(10, 3, 12),
+(11, 3, 7),
+(12, 3, 14);
 
 -- --------------------------------------------------------
 
@@ -98,7 +141,7 @@ CREATE TABLE `historial` (
   `UsuarioID` int(11) NOT NULL,
   `LibroID` int(11) NOT NULL,
   `FechaAccion` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -121,7 +164,7 @@ CREATE TABLE `libros` (
   `Estado` enum('Disponible','Prestado','Reservado') NOT NULL,
   `Visitas` int(11) NOT NULL DEFAULT 0,
   `Gustados` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `libros`
@@ -153,7 +196,7 @@ INSERT INTO `libros` (`LibroID`, `Titulo`, `Autor`, `ISBN`, `FechaLanzamiento`, 
 CREATE TABLE `libros_categorias` (
   `LibroID` int(11) NOT NULL,
   `CategoriaID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `libros_categorias`
@@ -203,7 +246,7 @@ CREATE TABLE `reservas` (
   `LibroID` int(11) NOT NULL,
   `FechaReserva` date DEFAULT NULL,
   `Estado` enum('Activa','Cancelada','Finalizada') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -214,7 +257,7 @@ CREATE TABLE `reservas` (
 CREATE TABLE `roles` (
   `RollID` int(11) NOT NULL,
   `NombreRol` enum('propietario','admin','mod','user') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -229,6 +272,26 @@ INSERT INTO `roles` (`RollID`, `NombreRol`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `seguidos`
+--
+
+CREATE TABLE `seguidos` (
+  `SeguidoID` int(11) NOT NULL,
+  `UsuarioID` int(11) DEFAULT NULL,
+  `LibroID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `seguidos`
+--
+
+INSERT INTO `seguidos` (`SeguidoID`, `UsuarioID`, `LibroID`) VALUES
+(5, 3, 4),
+(6, 3, 7);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -236,10 +299,10 @@ CREATE TABLE `usuarios` (
   `UsuarioID` int(11) NOT NULL,
   `Nombre` varchar(255) NOT NULL,
   `CorreoElectronico` varchar(255) NOT NULL,
-  `Imagen` varchar(255) NOT NULL,
+  `Imagen` varchar(255) NOT NULL DEFAULT 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
   `Contrasenia` varchar(255) NOT NULL,
   `RollID` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -285,6 +348,14 @@ ALTER TABLE `favoritos`
   ADD KEY `LibroID` (`LibroID`);
 
 --
+-- Indices de la tabla `gustados`
+--
+ALTER TABLE `gustados`
+  ADD PRIMARY KEY (`GustadoID`),
+  ADD KEY `UsuarioID` (`UsuarioID`),
+  ADD KEY `LibroID` (`LibroID`);
+
+--
 -- Indices de la tabla `historial`
 --
 ALTER TABLE `historial`
@@ -320,6 +391,14 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`RollID`);
 
 --
+-- Indices de la tabla `seguidos`
+--
+ALTER TABLE `seguidos`
+  ADD PRIMARY KEY (`SeguidoID`),
+  ADD KEY `LibroID` (`LibroID`),
+  ADD KEY `UsuarioID` (`UsuarioID`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -352,7 +431,13 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `FavoritoID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `FavoritoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `gustados`
+--
+ALTER TABLE `gustados`
+  MODIFY `GustadoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `historial`
@@ -377,6 +462,12 @@ ALTER TABLE `reservas`
 --
 ALTER TABLE `roles`
   MODIFY `RollID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `seguidos`
+--
+ALTER TABLE `seguidos`
+  MODIFY `SeguidoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -436,3 +527,7 @@ ALTER TABLE `reservas`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`RollID`) REFERENCES `roles` (`RollID`) ON DELETE CASCADE;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

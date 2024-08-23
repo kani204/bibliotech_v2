@@ -1,7 +1,7 @@
 import connection from '../database.js'
 
 class BookModel {
-    static async getAll({ title, genre }) {
+    static async getAll({ title, genre } = {}) {
         const db = await connection()
 
         let sql
