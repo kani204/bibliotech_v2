@@ -54,6 +54,12 @@ class UserModel {
 
         await db.query(`INSERT INTO seguidos (UsuarioID, LibroID) VALUES ('${userId}', '${libroId}');`)
     }
+
+    static async comentar({ userId, libroId, comentario }) {
+        const db = await connection()
+
+        await db.query(`INSERT INTO Comentarios (UsuarioID, LibroID, Comentario) VALUES ('${userId}', '${libroId}', '${comentario}')`)
+    }
 }
 
 export default UserModel

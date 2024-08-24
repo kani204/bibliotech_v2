@@ -57,6 +57,29 @@
           </div>
         </div>
         <iframe class="pdf" src="<%- libro[0].pdf_link %>" frameborder="0"></iframe>
+        <section class="comentarios">
+          <h2>Comentarios</h2>
+          <div id="comentario" data-libroId="<%- libro[0].LibroID %>">
+            <textarea name="comentario" id="texto" placeholder="Tú opinion..."></textarea>
+            <div class="botones">
+              <button type="submit" id="enviarComentario">Comentar</button>
+            </div>
+          </div>
+          <hr>
+          <div class="todo">
+            <% comentarios.forEach(comentario => { %>
+              <div class="comentario">
+                <div class="usuario">
+                  <img src="<%- comentario.avatar %>" alt="<%- comentario.username %>">
+                  <p><%- comentario.username %></p>
+                </div>
+                <div class="texto">
+                  <p><%- comentario.Comentario %></p>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </section>
     </main>
     <footer class="footerContainer">
       <%- include('partials/footer.ejs') %>

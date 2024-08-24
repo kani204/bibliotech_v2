@@ -6,6 +6,45 @@ const notificacion = document.getElementById('notificacion')
 const notificacionMensaje = document.querySelector('.notificacion p')
 const notificacionIcon = document.querySelector('.notificacion i')
 
+const botonEnviarComentario = document.getElementById('enviarComentario')
+const divComentario = document.getElementById('comentario')
+const comentario = document.getElementById('texto')
+
+botonEnviarComentario.addEventListener('click', (elem) => {
+    const libroId = divComentario.getAttribute('data-libroId')
+
+    if(comentario.value.length <= 0) return
+
+    fetch(`http://localhost:3000/libro/${libroId}/comentar`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ comentario: comentario.value })
+    })
+    .then(response => {
+        if(response.ok) {
+            location.reload()
+            
+            return
+        }
+
+        if(response.statusText == 'user_not_logged') {
+            notificacion.style.display = 'flex'
+            notificacion.style.borderTopColor = 'red'
+
+            notificacionIcon.className = 'fa-solid fa-arrow-down'
+            notificacionMensaje.innerHTML = 'Inicia sesión para poder utilizar esto.'
+
+            return
+        }
+    })
+    .catch(err => {
+        console.error(err)
+    })
+})
+
 botonVerLuego.addEventListener('click', () => {
     const libroId = botonVerLuego.getAttribute('data-libroId')
     fetch('http://localhost:3000/favorito/' + libroId + '/agregar', { method: 'post' })

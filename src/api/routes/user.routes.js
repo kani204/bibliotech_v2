@@ -13,4 +13,6 @@ userRouter.post('/gustado/:libroId/agregar', async (req, res) => { UserControlle
 
 userRouter.post('/seguido/:libroId/agregar', async (req, res) => { UserController.añadirSeguido(req, res) })
 
+userRouter.post('/libro/:libroId/comentar', async (req, res) => { UserController.comentar(req, res) })
+
 export default userRouter

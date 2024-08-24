@@ -1,6 +1,11 @@
 import BookModel from "../models/book.model.js"
 import UserModel from "../models/user.model.js"
 
+const responseStatus = ({ code, message, res }) => {
+    res.statusMessage = message
+    res.status(code).end()
+} 
+
 class UserController {
     static async register(req, res) {
         const { username, password, email } = req.body
@@ -33,14 +38,29 @@ class UserController {
         }
     }
 
+    static async comentar(req, res) {
+        const { libroId } = req.params
+        const { userId } = req.session
+        const { comentario } = req.body
+
+        if(typeof userId == 'undefined') return responseStatus({ code: 404, message: 'user_not_logged', res })
+
+        if(!comentario || comentario.length <= 0) return responseStatus({ code: 404, message: 'comentario vacio', res })
+
+        try {
+            await UserModel.comentar({ userId, libroId, comentario })
+            res.status(200).send('added')
+        } catch(err) {
+            res.status(404).send('error')
+            console.error(err)
+        }
+    }
+
     static async añadirFavorito(req, res) {
         const { userId } = req.session
         const { libroId } = req.params
 
-        if(typeof userId == 'undefined') {
-            res.statusMessage = 'user_not_logged'
-            return res.status(404).end()
-        }
+        if(typeof userId == 'undefined') return responseStatus({ code: 404, message: 'user_not_logged', res })
 
         try {
             const response = await UserModel.añadirFavorito({ userId,libroId })
@@ -52,7 +72,7 @@ class UserController {
 
             res.status(200).send('added')
         } catch(err) {
-            res.status(404).send('hola')
+            res.status(404).send('error')
             console.error(err)
         }
     }
@@ -61,10 +81,7 @@ class UserController {
         const { userId } = req.session
         const { libroId } = req.params
 
-        if(typeof userId == 'undefined') {
-            res.statusMessage = 'user_not_logged'
-            return res.status(404).end()
-        }
+        if(typeof userId == 'undefined') return responseStatus({ code: 404, message: 'user_not_logged', res })
 
         try {
             const response = await UserModel.añadirGustado({ userId,libroId })
@@ -85,10 +102,7 @@ class UserController {
         const { userId } = req.session
         const { libroId } = req.params
 
-        if(typeof userId == 'undefined') {
-            res.statusMessage = 'user_not_logged'
-            return res.status(404).end()
-        }
+        if(typeof userId == 'undefined') return responseStatus({ code: 404, message: 'user_not_logged', res })
 
         try {
             const response = await UserModel.añadirSeguido({ userId,libroId })

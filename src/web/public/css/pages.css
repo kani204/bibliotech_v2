@@ -119,6 +119,73 @@
     cursor: pointer;
 }
 
+.comentarios {
+    width: 700px;
+    margin-top: 40px;
+}
+
+.comentarios #comentario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comentarios #comentario textarea {
+    flex-grow: 1;
+    max-height: 250px;
+    min-height: 45px;
+    padding: 10px;
+    height: 100px;
+    font-size: 18px;
+    background-color: transparent;
+    border: 1px solid var(--color-fondo-secundario);
+    color: var(--color-letra);
+    resize: vertical;
+    border-radius: 5px;
+    outline: none;
+}
+
+.comentarios #comentario button {
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--color-primario);
+    color: var(--color-letra-secundario);
+    font-weight: 600;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.comentarios #comentario button:hover {
+    background-color: var(--color-primario-hover);
+}
+
+.comentarios .comentario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid var(--color-fondo-secundario);
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 25px;
+}
+
+.comentarios .comentario .texto p {
+    line-height: 25px;
+}
+
+.comentarios .comentario .usuario {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.comentarios .usuario img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
 @media (max-width: 575.98px) {
     .libroContainer, .navbar, .pdf {
         width: 100%!important;

@@ -97,6 +97,16 @@ class BookModel {
 
         await db.query(sql)
     }
+
+    static async getComments({ id }) {
+        const db = await connection()
+
+        const sql = `SELECT c.ComentarioID, c.Comentario, c.UsuarioID as userId, c.LibroID, c.FechaComentario as date, u.Nombre as username, u.Imagen as avatar FROM comentarios c JOIN libros l ON c.LibroID = l.LibroID JOIN usuarios u ON c.UsuarioID = u.UsuarioID WHERE l.LibroID = ${id} ORDER BY c.FechaComentario DESC`
+
+        const [comentarios] = await db.query(sql)
+
+        return comentarios
+    }
 }
 
 export default BookModel
