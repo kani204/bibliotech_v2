@@ -73,6 +73,18 @@ class BookController {
             res.status(404).send(err)
         }
     }
+
+    static async deleteCommentById(req, res) {
+        const { id } = req.params
+
+        try {
+            await BookModel.deleteCommentById({ id })
+            res.status(200).send('deleted')
+        } catch(err) {
+            console.error(err)
+            res.status(404).send('error')
+        }
+    }
 }
 
 export default BookController

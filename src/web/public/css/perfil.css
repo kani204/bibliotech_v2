@@ -37,6 +37,7 @@
 }
 
 .perfil .librosContenedor figure {
+    position: relative;
     width: 180px;
     height: 270px;
 }
@@ -70,4 +71,17 @@
     padding-top: 100px;
     border: 1px solid var(--color-fondo-secundario);
     border-radius: 5px;
+}
+
+.perfil .acciones .borrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    background-color: red;
+    color: #fff;
+    padding: 9px;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
 }

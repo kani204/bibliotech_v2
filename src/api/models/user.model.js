@@ -37,6 +37,12 @@ class UserModel {
         await db.query(`INSERT INTO favoritos (UsuarioID, LibroID) VALUES ('${userId}', '${libroId}');`)
     }
     
+    static async eliminarFavorito({ userId, libroId }) {
+        const db = await connection()
+        console.log(userId, libroId)
+        await db.query(`DELETE FROM gustados WHERE UsuarioID = '${userId}' AND LibroID = '${libroId}'`)
+    }
+
     static async añadirGustado({ userId, libroId }) {
         const db = await connection()
 

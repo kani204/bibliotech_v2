@@ -107,6 +107,14 @@ class BookModel {
 
         return comentarios
     }
+
+    static async deleteCommentById({ id }) {
+        const db = await connection()
+
+        const sql = `DELETE FROM comentarios WHERE ComentarioID = '${id}'`
+
+        await db.query(sql)
+    }
 }
 
 export default BookModel

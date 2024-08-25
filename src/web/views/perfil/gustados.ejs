@@ -21,6 +21,9 @@
                                 <a href="/libro/<%- libro.LibroID %>">
                                     <img src="<%- libro.imagen %>" alt="<%- libro.Titulo %>">
                                 </a>
+                                <div class="acciones">
+                                    <i class="fa-solid fa-x borrar" data-libroId="<%- libro.LibroID %>"></i>
+                                </div>
                             </figure>
                             <a href="/libro/<%- libro.LibroID %>">
                                 <p><%- libro.Titulo %></p>
@@ -34,5 +37,6 @@
     <footer class="footerContainer">
         <%- include('../partials/footer.ejs') %>
     </footer>
+    <script src="js/perfil.js"></script>
 </body>
 </html>

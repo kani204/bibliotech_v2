@@ -168,6 +168,7 @@
     border-radius: 5px;
     padding: 15px;
     margin-top: 25px;
+    position: relative;
 }
 
 .comentarios .comentario .texto p {
@@ -176,8 +177,22 @@
 
 .comentarios .comentario .usuario {
     display: flex;
-    gap: 10px;
     align-items: center;
+    gap: 10px;
+}
+
+.comentarios .modAcciones {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.comentarios .modAcciones .borrar {
+    background-color: red;
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 100%;
+    cursor: pointer;
 }
 
 .comentarios .usuario img {

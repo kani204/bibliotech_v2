@@ -8,6 +8,7 @@ userRouter.post('/usuario/logear', async (req, res) => { UserController.login(re
 userRouter.post('/usuario/crear', async (req, res) => { UserController.register(req, res) })
 
 userRouter.post('/favorito/:libroId/agregar', async (req, res) => { UserController.añadirFavorito(req, res) })
+userRouter.post('/favorito/:libroId/eliminar', async (req, res) => { UserController.eliminarFavorito(req, res) })
 
 userRouter.post('/gustado/:libroId/agregar', async (req, res) => { UserController.añadirGustado(req, res) })
 

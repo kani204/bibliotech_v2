@@ -10,6 +10,37 @@ const botonEnviarComentario = document.getElementById('enviarComentario')
 const divComentario = document.getElementById('comentario')
 const comentario = document.getElementById('texto')
 
+const botonesBorrar = document.querySelectorAll('.comentarios .borrar')
+
+botonesBorrar.forEach(boton => {
+    boton.addEventListener('click', (elem) => {
+        const comentarioId = elem.target.getAttribute('data-comentarioId')
+
+        fetch(`http://localhost:3000/comentario/${comentarioId}/eliminar`, {
+            method: 'POST'
+        })
+        .then(response => {
+            if(response.ok) {
+                location.reload()
+                return
+            }
+
+            if(response.statusText == 'user_not_logged') {
+                notificacion.style.display = 'flex'
+                notificacion.style.borderTopColor = 'red'
+    
+                notificacionIcon.className = 'fa-solid fa-arrow-down'
+                notificacionMensaje.innerHTML = 'Inicia sesión para poder utilizar esto.'
+    
+                return
+            }
+        })
+        .catch(err => {
+            console.error(err)
+        })
+    })
+})
+
 botonEnviarComentario.addEventListener('click', (elem) => {
     const libroId = divComentario.getAttribute('data-libroId')
 
@@ -26,7 +57,7 @@ botonEnviarComentario.addEventListener('click', (elem) => {
     .then(response => {
         if(response.ok) {
             location.reload()
-            
+
             return
         }
 

@@ -72,6 +72,11 @@
                 <div class="usuario">
                   <img src="<%- comentario.avatar %>" alt="<%- comentario.username %>">
                   <p><%- comentario.username %></p>
+                  <% if(role == 'admin' || role == 'mod') { %>
+                    <div class="modAcciones">
+                      <i class="fa-solid fa-x borrar" data-comentarioId="<%- comentario.ComentarioID %>"></i>
+                    </div>
+                  <% } %>
                 </div>
                 <div class="texto">
                   <p><%- comentario.Comentario %></p>

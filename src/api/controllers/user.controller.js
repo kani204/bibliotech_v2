@@ -77,6 +77,21 @@ class UserController {
         }
     }
 
+    static async eliminarFavorito(req, res) {
+        const { userId } = req.session
+        const { libroId } = req.params
+
+        if(typeof userId == 'undefined') return responseStatus({ code: 404, message: 'user_not_logged', res })
+
+        try {
+            await UserModel.eliminarFavorito({ userId, libroId })
+            res.status(200).send('deleted')
+        } catch(err) {
+            res.status(404).send('error')
+            console.error(err)
+        }
+    }
+
     static async añadirGustado(req, res) {
         const { userId } = req.session
         const { libroId } = req.params

@@ -12,6 +12,8 @@ import BookController from '../controllers/book.controller.js'
 
 bookRouter.get('/libro/:id', (req, res) => { BookController.getById(req, res) })
 
+bookRouter.post('/comentario/:id/eliminar', (req, res) => { BookController.deleteCommentById(req, res) })
+
 bookRouter.get('/libro/:id/editar', isAdmin, async (req, res) => {
     const { username, role } = req.session
 
