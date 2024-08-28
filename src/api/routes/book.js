@@ -45,6 +45,28 @@ bookRouter.post('/libro/:id/editar', isAdmin, async (req, res) => {
     }
 })
 
+bookRouter.get('/libro/agregar', isAdmin, async(req, res) => {
+    const { username, role } = req.session;
+    res.render('agregarlibro', { title: 'Agregar Libro', username, role });
+});
+
+
+bookRouter.post('/libro/agregar', isAdmin, async (req, res) => {
+    const { titulo, autor, isbn, fechaLanzamiento, cantidadPaginas, editorial, sinopsis, pdf_link, idioma, estado } = req.body;
+    //const imagen = req.file ? `/uploads/${req.file.filename}` : null;
+
+    try {
+        await BookController.createBook({
+            titulo, autor, isbn, fechaLanzamiento, cantidadPaginas, editorial, sinopsis, pdf_link, idioma, estado, imagen
+        });
+        res.redirect('/catalogo'); 
+    } catch (err) {
+        console.error(err);
+        res.status(500).render('error', { title: 'Error', err });
+    }
+});
+
+
 bookRouter.post('/libro/:id/eliminar', (req, res) => { BookController.deleteById(req, res) })
 
 export default bookRouter

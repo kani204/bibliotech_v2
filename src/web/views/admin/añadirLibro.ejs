@@ -1,65 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<%- include('../partials/admin/head.ejs') %>
-	</head>
-	<body>
-		<div class="panel">
-            <%- include('../partials/admin/sidebar.ejs') %>
-            <main>
-                <%- include('../partials/admin/navbar.ejs') %>
-                <div class="contenedor">
-                   <h1>Añadir Libro</h1>
-                    <form class="editarLibroContainer" action="/libro/agregar" method="POST" enctype="multipart/form-data">
+<head>
+    <%- include('../partials/admin/head.ejs') %>
+</head>
+<body>
+    <div class="panel">
+        <%- include('../partials/admin/sidebar.ejs') %>
+        <main>
+            <%- include('../partials/admin/navbar.ejs') %>
+            <div class="contenedor">
+                <h1>Añadir Libro</h1>
+                <form class="editarLibroContainer" action="/libro/agregar" method="POST" enctype="multipart/form-data">
 
-                        <!-- Imagen a un costado -->
-                        <div class="portada">
-                            <figure>
-                                <img id="imagen" src="https://edit.org/images/cat/portadas-libros-big-2019101610.jpg" alt="">
-                            </figure>
-                            <input type="file" id="imagenInput" name="imagen">
-                        </div>
+                    <!-- Imagen a un costado -->
+                    <div class="portada">
+                        <figure>
+                            <img id="imagen" src="https://edit.org/images/cat/portadas-libros-big-2019101610.jpg" alt="">
+                        </figure>
+                        <input type="file" id="imagenInput" name="imagen">
+                    </div>
 
-                        <!-- Formulario en el otro costado -->
-                        <div class="datos">
-                            <div class="row">
-                                <div class="columna">
-                                    <h4>Titulo</h4>
-                                    <input type="text" placeholder=". . ." name="titulo">
-                                    <h4>Autor</h4>
-                                    <input type="text" placeholder=". . ." name="autor">
-                                    <h4>ISBN</h4>
-                                    <input type="text" placeholder=". . ." name="isbn">
-                                </div>
-                                <div class="columna">
-                                    <h4>Cantidad de paginas</h4>
-                                    <input type="text" placeholder=". . ." name="cantidad_paginas">
-                                    <h4>Idioma</h4>
-                                    <input type="text" placeholder=". . ." name="idioma">
-                                    <h4>Estado</h4>
-                                    <select name="estado">
-                                        <option value="disponible">Disponible</option>
-                                        <option value="prestado">Prestado</option>
-                                    </select>
-                                </div>
+                    <!-- Formulario en el otro costado -->
+                    <div class="datos">
+                        <div class="row">
+                            <div class="columna">
+                                <h4>Título</h4>
+                                <input type="text" placeholder=". . ." name="titulo">
+                                <h4>Autor</h4>
+                                <input type="text" placeholder=". . ." name="autor">
+                                <h4>ISBN</h4>
+                                <input type="text" placeholder=". . ." name="isbn">
+                                <h4>Fecha de Lanzamiento</h4>
+                                <input type="date" name="fecha_lanzamiento">
                             </div>
-                            <h4>Sinopsis</h4>
-                            <textarea name="sinopsis" placeholder=". . ." class="sinopsis"></textarea>
-                            <div class="botones">
-                                <a href="/panel/libros">Cancelar</a>
-                                <button type="submit">Agregar</button>
+                            <div class="columna">
+                                <h4>Cantidad de páginas</h4>
+                                <input type="text" placeholder=". . ." name="cantidad_paginas">
+                                <h4>Idioma</h4>
+                                <input type="text" placeholder=". . ." name="idioma">
+                                <h4>Estado</h4>
+                                <select name="estado">
+                                    <option value="disponible">Disponible</option>
+                                    <option value="prestado">Prestado</option>
+                                </select>
+                                <h4>Editorial</h4>
+                                <input type="text" placeholder=". . ." name="editorial">
                             </div>
                         </div>
-                    </form>
-                </div>
-                <footer class="footerContainer">
-                    <%- include('../partials/footer.ejs') %>
-                </footer>
-            </main>
-        </div>
 
-        <script src="js/cambiarTema.js"></script>
-	</body>
+                        <!-- Sinopsis -->
+                        <h4>Sinopsis</h4>
+                        <textarea name="sinopsis" placeholder=". . ." class="sinopsis"></textarea>
+
+                        <!-- PDF Link -->
+                        <h4>PDF Link</h4>
+                        <input type="text" placeholder=". . ." name="pdf_link">
+
+                        <!-- Categorías (checkboxes) -->
+                        <h4>Categorías</h4>
+                        <div class="categorias">
+                            <label for="ficcion"><input type="checkbox" id="ficcion" name="categorias" value="ficcion"> Ficción</label>
+                            <label for="no_ficcion"><input type="checkbox" id="no_ficcion" name="categorias" value="no_ficcion"> No Ficción</label>
+                            <label for="ciencia"><input type="checkbox" id="ciencia" name="categorias" value="ciencia"> Ciencia</label>
+                            <label for="historia"><input type="checkbox" id="historia" name="categorias" value="historia"> Historia</label>
+                            <label for="romantico"><input type="checkbox" id="romantico" name="categorias" value="romantico"> Romántico</label>
+                            <label for="thriller"><input type="checkbox" id="thriller" name="categorias" value="thriller"> Thriller</label>
+                            <label for="fantastico"><input type="checkbox" id="fantastico" name="categorias" value="fantastico"> Fantástico</label>
+                            <label for="biografia"><input type="checkbox" id="biografia" name="categorias" value="biografia"> Biografía</label>
+                            <label for="tecnologia"><input type="checkbox" id="tecnologia" name="categorias" value="tecnologia"> Tecnología</label>
+                            <label for="cultura"><input type="checkbox" id="cultura" name="categorias" value="cultura"> Cultura</label>
+                            <label for="misterio"><input type="checkbox" id="misterio" name="categorias" value="misterio"> Misterio</label>
+                            <label for="aventura"><input type="checkbox" id="aventura" name="categorias" value="aventura"> Aventura</label>
+                            <label for="infantil"><input type="checkbox" id="infantil" name="categorias" value="infantil"> Infantil</label>
+                            <label for="juvenil"><input type="checkbox" id="juvenil" name="categorias" value="juvenil"> Juvenil</label>
+                            <label for="clasico"><input type="checkbox" id="clasico" name="categorias" value="clasico"> Clásico</label>
+                        </div>
+                        
+
+
+                        <!-- Botones -->
+                        <div class="botones">
+                            <a href="/panel/libros">Cancelar</a>
+                            <button type="submit">Agregar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <footer class="footerContainer">
+                <%- include('../partials/footer.ejs') %>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/cambiarTema.js"></script>
+</body>
 </html>
 
 <script src="js/previsualizarImagen.js"></script>

@@ -76,19 +76,20 @@ class BookModel {
     }
 
     static async createBook({ book }) {
-        const { titulo, autor, isbn, fechaLanzamiento, cantidadPaginas, editorial, sinopsis, imagen, pdf_link, idioma, estado, visitas, gustados } = book
-
-        const db = await connection()
-
-        const sql = `INSERT INTO libros ('Titulo', 'Autor', 'ISBN', 'FechaLanzamiento', 'CantidadPaginas', 'Editorial', 'Sinopsis', 'imagen', 'pdf_link', 'Idioma', 'Estado', 'Visitas', 'Gustados') VALUES ('${titulo}', '${autor}', '${isbn}', '${fechaLanzamiento}', '${cantidadPaginas}', '${editorial}', '${sinopsis}', '${imagen}', '${pdf_link}', '${idioma}', '${estado}', '${visitas}', '${gustados}');`
-
+        const { titulo, autor, isbn, fechaLanzamiento, cantidadPaginas, editorial, sinopsis, imagen, pdf_link, idioma, estado, visitas = 0, gustados = 0 } = book;
+    
+        const db = await connection();
+    
+        const sql = `INSERT INTO libros (Titulo, Autor, ISBN, FechaLanzamiento, CantidadPaginas, Editorial, Sinopsis, imagen, pdf_link, Idioma, Estado, Visitas, Gustados) 
+                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    
         try {
-            const libro = await db.query(sql)
-            return libro
-        } catch(err) {
-            console.error(err)
+            const [result] = await db.query(sql, [titulo, autor, isbn, fechaLanzamiento, cantidadPaginas, editorial, sinopsis, imagen, pdf_link, idioma, estado, visitas, gustados]);
+            return result;
+        } catch (err) {
+            console.error(err);
         }
-    }
+    }    
 
     static async deleteById({ id }) {
         const db = await connection()

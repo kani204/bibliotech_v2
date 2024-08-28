@@ -85,6 +85,34 @@ class BookController {
             res.status(404).send('error')
         }
     }
+
+    static async createBook(req, res) {
+        const { titulo, autor, isbn, fechaLanzamiento, cantidadPaginas, editorial, sinopsis, pdf_link, idioma, estado } = req.body;
+        const imagen = req.file ? `/uploads/${req.file.filename}` : null;
+
+        try {
+            const book = {
+                titulo,
+                autor,
+                isbn,
+                fechaLanzamiento,
+                cantidadPaginas,
+                editorial,
+                sinopsis,
+                imagen,
+                pdf_link,
+                idioma,
+                estado
+            };
+
+            await BookModel.createBook({ book });
+            res.redirect('/panel/libros'); 
+        } catch (err) {
+            console.error(err);
+            res.status(500).render('error', { title: 'Error', err });
+        }
+    }
+
 }
 
 export default BookController
